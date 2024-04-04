@@ -1,8 +1,6 @@
 local M = {}
 
 local NVIM_DATA_DIR = vim.fn.stdpath("data")
-local ABSTRACT_DIR = "/home/shaeins7/codeDNA/dev/Projects/neovim/Abstract" -- WARN!: only for development
--- local ABSTRACT_DIR = NVIM_DATA_DIR .. "/Abstract"
 
 M.opts = {
 	root = NVIM_DATA_DIR .. "/lazy/plugins", -- directory where plugins will be installed
@@ -50,7 +48,7 @@ M.opts = {
 			-- add any custom paths here that you want to includes in the rtp
 			---@type string[]
 			paths = {
-				ABSTRACT_DIR,
+				vim.g.ABSTRACT_INSTALL_PATH,
 				NVIM_DATA_DIR .. "/treesitter",
 			},
 			---@type string[] list any plugins you want to disable here
