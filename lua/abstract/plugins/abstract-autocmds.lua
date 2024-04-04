@@ -30,7 +30,7 @@ spec.config = function()
 		give_border = {
 			enable = true,
 			opts = {
-				pattern = { "null-ls-info", "lspinfo" },
+				pattern = { "null-ls-info", "lspinfo", "markdown" },
 			},
 		},
 		smart_dd = true,
