@@ -14,7 +14,7 @@ local spec = {
 	"williamboman/mason-lspconfig.nvim",
 	lazy = true,
 	dependencies = {
-		"b0o/schemastore.nvim", -- A Neovim Lua plugin providing access to the SchemaStore catalog.
+		"b0o/SchemaStore.nvim", -- A Neovim Lua plugin providing access to the SchemaStore catalog.
 	},
 }
 
