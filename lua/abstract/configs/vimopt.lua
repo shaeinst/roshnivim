@@ -10,7 +10,7 @@ vim.loader.enable()
 -- To see the current mapping for |<Leader>|, type :echo mapleader.
 -- If it reports an undefined variable, it means the leader key is set to the "default of '\'.
 -- I have defined the leader at the very start of the init.lua file so that every keymap will work.
-vim.g.mapleader = ";"
+vim.g.mapleader = " "
 vim.g.maplocalleader = "|"
 
 vim.opt.termguicolors = true -- Enable GUI colors for the terminal to get truecolor

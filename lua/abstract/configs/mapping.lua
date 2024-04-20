@@ -24,34 +24,34 @@ plugin["nvim-telescope/telescope.nvim"] = {
 }
 
 plugin["neovim/nvim-lspconfig"] = {
-	["<Space>e"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Show diagnostics" },
-	-- ["<Space>n"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Move to next diagnostic" },
-	-- ["<Space>b"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Move to previous diagnostic" },
-	["<Space>d"] = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Jumps to definition" },
-	["<Space>D"] = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Jumps to declaration" },
-	["<Space>T"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Jumps to type definition" },
-	["<Space>i"] = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Lists all symbol implementations" },
-	["<Space>s"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Show symbol signature information" },
-	-- ["<Space>h"] = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "Show symbol hover information" },
+	["<Leader>e"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Show diagnostics" },
+	-- ["<Leader>n"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Move to next diagnostic" },
+	-- ["<Leader>b"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Move to previous diagnostic" },
+	["<Leader>d"] = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Jumps to definition" },
+	["<Leader>D"] = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Jumps to declaration" },
+	["<Leader>T"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Jumps to type definition" },
+	["<Leader>i"] = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Lists all symbol implementations" },
+	["<Leader>s"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Show symbol signature information" },
+	-- ["<Leader>h"] = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "Show symbol hover information" },
 	["K"] = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "Show symbol hover information" },
 	-- using 'filipdutescu/renamer.nvim' for rename instead
-	-- ["<Space>rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "" },
-	["<Space>f"] = { "<cmd>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>", "Format document" },
-	["<Space>a"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
-	-- ["<Space>a"]   = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>", "Range code action" },
-	["<Space>r"] = { "<cmd>Telescope lsp_references<CR>", " Lsp references" },
+	-- ["<Leader>rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "" },
+	["<Leader>f"] = { "<cmd>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>", "Format document" },
+	["<Leader>a"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
+	-- ["<Leader>a"]   = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>", "Range code action" },
+	["<Leader>r"] = { "<cmd>Telescope lsp_references<CR>", " Lsp references" },
 
-	-- ["<leader>wa"] = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "" },
-	-- ["<leader>wr"] = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "" },
-	-- ["<leader>wl"] = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "" },
+	-- [";wa"] = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "" },
+	-- [";wr"] = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "" },
+	-- [";wl"] = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "" },
 }
 
 plugin["nvimtools/none-ls.nvim"] = {
-	["<Space>f"] = { "<cmd>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>", "Format document" },
+	["<Leader>f"] = { "<cmd>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>", "Format document" },
 }
 
 -- plugin["ThePrimeagen/harpoon"] = {
--- 	["<Space>h"] = {
+-- 	["<Leader>h"] = {
 -- 		{
 -- 			["h"] = { "<cmd>lua HarpoonTelescope()<cr>", "Open harpoon window" },
 -- 			["a"] = { "<cmd>lua Harpoon_List:append()<cr>", "Add current buffer to harpoon" },
@@ -62,14 +62,14 @@ plugin["nvimtools/none-ls.nvim"] = {
 -- 		"Harpoon",
 -- 	},
 -- 	["<C-h>"] = { "<cmd>lua HarpoonTelescope()<cr>", "Open harpoon window" },
--- 	["<Space>1"] = { "<cmd>lua Harpoon_List:select(1)<cr>", "Goto 1st file in harpoon" },
--- 	["<Space>2"] = { "<cmd>lua Harpoon_List:select(2)<cr>", "Goto 2nd file in harpoon" },
--- 	["<Space>3"] = { "<cmd>lua Harpoon_List:select(3)<cr>", "Goto 3rd file in harpoon" },
--- 	["<Space>4"] = { "<cmd>lua Harpoon_List:select(4)<cr>", "Goto 4th file in harpoon" },
+-- 	["<Leader>1"] = { "<cmd>lua Harpoon_List:select(1)<cr>", "Goto 1st file in harpoon" },
+-- 	["<Leader>2"] = { "<cmd>lua Harpoon_List:select(2)<cr>", "Goto 2nd file in harpoon" },
+-- 	["<Leader>3"] = { "<cmd>lua Harpoon_List:select(3)<cr>", "Goto 3rd file in harpoon" },
+-- 	["<Leader>4"] = { "<cmd>lua Harpoon_List:select(4)<cr>", "Goto 4th file in harpoon" },
 -- }
 
 plugin["cbochs/grapple.nvim"] = {
-	["<Space>g"] = {
+	["<Leader>g"] = {
 		{
 			["t"] = { "<cmd>Grapple open_tags<cr>", "Show tags" },
 			["l"] = { "<cmd>Grapple open_loaded<cr>", "Show loaded" },
@@ -82,34 +82,34 @@ plugin["cbochs/grapple.nvim"] = {
 		},
 		"+Grapple",
 	},
-	["<Space>1"] = { "<cmd>Grapple select index=1<cr>", "Grapple select 1" },
-	["<Space>2"] = { "<cmd>Grapple select index=2<cr>", "Grapple select 2" },
-	["<Space>3"] = { "<cmd>Grapple select index=3<cr>", "Grapple select 3" },
-	["<Space>4"] = { "<cmd>Grapple select index=4<cr>", "Grapple select 4" },
+	["<Leader>1"] = { "<cmd>Grapple select index=1<cr>", "Grapple select 1" },
+	["<Leader>2"] = { "<cmd>Grapple select index=2<cr>", "Grapple select 2" },
+	["<Leader>3"] = { "<cmd>Grapple select index=3<cr>", "Grapple select 3" },
+	["<Leader>4"] = { "<cmd>Grapple select index=4<cr>", "Grapple select 4" },
 }
 
 plugin["folke/trouble.nvim"] = {
-	["<Space>t"] = { "<cmd>TroubleToggle<cr>", "Trouble(toggle)" },
+	["<Leader>t"] = { "<cmd>TroubleToggle<cr>", "Trouble(toggle)" },
 }
 
 plugin["nvim-neo-tree/neo-tree.nvim"] = {
-	["<Leader>f"] = { ":Neotree toggle<CR>", "File Explorer(toggle)" },
+	[";f"] = { ":Neotree toggle<CR>", "File Explorer(toggle)" },
 }
 
 plugin["nanozuki/tabby.nvim"] = {
 	-- Mappings (:h tab)
-	["<leader>q"] = { ":tabclose<CR>", "Close current tab" },
-	["<leader>Q"] = { ":tabonly<CR>", "Close all other tab" },
+	[";q"] = { ":tabclose<CR>", "Close current tab" },
+	[";Q"] = { ":tabonly<CR>", "Close all other tab" },
 	-- navigate to previous/next tab
 	["<C-\\>"] = { ":tabn<CR>", "Go to next tab" },
 	["<C-S-\\>"] = { ":tabp<CR>", "Go to previous tab" },
 	-- move current tab to previous/next position
-	["<leader>,"] = { ":-tabmove<CR>", "Move tab to next position" },
-	["<leader>."] = { ":+tabmove<CR>", "Move tab to previous position" },
+	[";,"] = { ":-tabmove<CR>", "Move tab to next position" },
+	[";."] = { ":+tabmove<CR>", "Move tab to previous position" },
 }
 
 plugin["filipdutescu/renamer.nvim"] = {
-	["<Space>R"] = { "<cmd>lua require('renamer').rename()<cr>", "Rename symbol" },
+	["<Leader>R"] = { "<cmd>lua require('renamer').rename()<cr>", "Rename symbol" },
 }
 
 plugin["smoka7/hop.nvim"] = {
@@ -130,7 +130,7 @@ plugin["smoka7/hop.nvim"] = {
 }
 
 plugin["Shatur/neovim-session-manager"] = {
-	["<leader>s"] = {
+	[";s"] = {
 		{
 			["s"] = { ":SessionManager load_session<CR>", "Load sessions" },
 			["d"] = { ":SessionManager delete_session<CR>", "Delete sessions" },
@@ -152,7 +152,7 @@ plugin["rmagatti/goto-preview"] = {
 }
 
 plugin["anuvyklack/windows.nvim"] = {
-	["<Leader>m"] = { ":WindowsMaximize<CR>", "Window maximizer (toggle)" },
+	[";m"] = { ":WindowsMaximize<CR>", "Window maximizer (toggle)" },
 }
 
 M.plugin = plugin
