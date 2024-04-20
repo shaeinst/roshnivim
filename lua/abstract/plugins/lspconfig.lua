@@ -49,7 +49,7 @@ local function lsp_config()
 	-- vim.api.nvim_command[[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]]
 end
 
-local lsp_options = {
+local hook = {
 	flags = { debounce_text_changes = 150 },
 	on_attach = function(client, bufnr)
 		-- invoke custom user cmd so that LSP dependent lsp can be lazy loaded
@@ -87,7 +87,7 @@ local lsp_options = {
 
 spec.config = function()
 	lsp_config()
-	return lsp_options
+	return hook
 end
 
 return spec

@@ -18,32 +18,25 @@ local spec = {
 	},
 }
 
-local function mason_lspconfig(lsp_options)
+local function mason_lspconfig(hook)
 	local lspconfig = require("lspconfig")
 
 	local function set_lspconfig(server, options)
-		-- ~/.config/nvim/lua/override/server_configs.lua
-		local user_server_cofigs = require("override.server_configs")[server]
-		if user_server_cofigs then
-			lsp_options = vim.tbl_deep_extend("force", lsp_options, options, user_server_cofigs)
-		else
-			lsp_options = vim.tbl_deep_extend("force", lsp_options, options)
-		end
-		lspconfig[server].setup(lsp_options)
+		lspconfig[server].setup(options)
 	end
 
-	return {
+	local server_config = {
 		function(server_name)
 			set_lspconfig(server_name, {})
 		end,
 		["rust_analyzer"] = function()
 			-- Rust LSP is maintained by https://github.com/mrcjkb/rustaceanvim
-			vim.g.rustaceanvim = { server = lsp_options }
+			vim.g.rustaceanvim = { server = hook }
 		end,
 		["tsserver"] = function()
 			-- Typescript LSP is maintained by https://github.com/pmizio/typescript-tools.nvim
-			vim.list_extend(lsp_options, require("abstract.plugins.typescript-tools").settings)
-			require("typescript-tools").setup(lsp_options)
+			vim.list_extend(hook, require("abstract.plugins.typescript-tools").settings)
+			require("typescript-tools").setup(hook)
 		end,
 		["html"] = function()
 			set_lspconfig("html", { filetypes = { "html", "htmldjango" } })
@@ -69,11 +62,22 @@ local function mason_lspconfig(lsp_options)
 				},
 			})
 		end,
+		["cssls"] = function()
+			set_lspconfig("cssls", {
+				capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } },
+			})
+		end,
 	}
+
+	-- override with user defined config ("~/.config/nvim/lua/override/lsp.lua")
+	local user_config = require("override.lsp").setup(lspconfig)
+	server_config = vim.tbl_extend("force", server_config, user_config)
+
+	return server_config
 end
 
 spec.config = function()
-	local lsp_options = require("abstract.plugins.lspconfig").config()
+	local hook = require("abstract.plugins.lspconfig").config()
 	require("mason-lspconfig").setup({
 		-- A list of servers to automatically install if they're not already installed. Example: { "rust_analyzer@nightly", "lua_ls" }
 		-- This setting has no relation with the `automatic_installation` setting.
@@ -92,7 +96,7 @@ spec.config = function()
 
 		-- See `:h mason-lspconfig.setup_handlers()`
 		---@type table<string, fun(server_name: string)>?
-		handlers = mason_lspconfig(lsp_options),
+		handlers = mason_lspconfig(hook),
 	})
 end
 
