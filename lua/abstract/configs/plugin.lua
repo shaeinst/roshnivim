@@ -1,6 +1,6 @@
 return {
+	"colorscheme",
 	"abstract-autocmds",
-	"Abstract-cs",
 	"abstract-cursor",
 	"abstract-line",
 	"abstract-winbar",
