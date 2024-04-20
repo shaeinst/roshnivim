@@ -22,7 +22,8 @@ local function mason_lspconfig(hook)
 	local lspconfig = require("lspconfig")
 
 	local function set_lspconfig(server, options)
-		lspconfig[server].setup(options)
+		local lsp_options = vim.tbl_deep_extend("force", hook, options)
+		lspconfig[server].setup(lsp_options)
 	end
 
 	local server_config = {
