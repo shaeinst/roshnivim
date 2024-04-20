@@ -32,99 +32,36 @@ spec.config = function()
 
 	-- register any number of sources simultaneously
 	local sources = {}
-	local load = false
 
 	-- ───────────────────────────────────────────────── --
 	-- ─────────────────❰ FORMATTING ❱────────────────── --
 	-- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 
 	for _, package in pairs(installed_packages) do
-		-- Lua
-		if package == "luaformatter" then
-			load = true
-			sources[#sources + 1] = formatting.lua_format.with({
-				command = "lua-format",
-				args = {
-					"--indent-width",
-					"1",
-					"--tab-width",
-					"4",
-					"--use-tab",
-					"--chop-down-table",
-					"--extra-sep-at-table-end",
-				},
-			})
-			goto loop_continue
-		end
+		-- lua
 		if package == "stylua" then
-			load = true
-			sources[#sources + 1] = formatting.stylua.with({
-				command = "stylua",
-				args = {
-					"--search-parent-directories",
-					"--stdin-filepath",
-					"$FILENAME",
-					"-",
-				},
-			})
-			goto loop_continue
+			sources[#sources + 1] = formatting.stylua.with({})
 		end
 		-- Python
 		if package == "black" then
-			load = true
-			sources[#sources + 1] = formatting.black.with({
-				command = "black",
-				args = { "--quiet", "--fast", "-" },
-			})
-			goto loop_continue
+			sources[#sources + 1] = formatting.black.with({})
 		end
 		-- Django ("htmldjango")
 		if package == "djlint" then
-			load = true
 			sources[#sources + 1] = formatting.djlint.with({
 				command = "djlint",
 				args = { "--reformat", "-" },
 			})
-			goto loop_continue
 		end
 		-- "javascript", "javascriptreact", "typescript", "typescriptreact", "vue",
 		-- "css", "scss", "less", "html", "json", "yaml", "markdown", "graphql"
 		if package == "prettier" then
-			load = true
-			sources[#sources + 1] = formatting.prettier.with({
-				command = "prettier",
-				args = { "--stdin-filepath", "$FILENAME" },
-			})
-			goto loop_continue
+			sources[#sources + 1] = formatting.prettier.with({})
 		end
-		-- C, C++, CS, Java
-		if package == "clang-format" then
-			load = true
-			sources[#sources + 1] = formatting.clang_format.with({
-				command = "clang-format",
-				args = {
-					"-assume-filename",
-					"$FILENAME",
-				},
-				to_stdin = true,
-			})
-			goto loop_continue
-		end
-		-- Rust
-		if package == "rustfmt" then
-			load = true
-			sources[#sources + 1] = formatting.rustfmt.with({
-				command = "rustfmt",
-			})
-			goto loop_continue
-		end
-
-		::loop_continue::
 	end
 
 	-- Go
 	if vim.fn.executable("gofmt") == 1 then
-		load = true
 		sources[#sources + 1] = formatting.gofmt.with({})
 	end
 	-- ───────────────❰ end FORMATTING ❱──────────────── --
@@ -137,7 +74,6 @@ spec.config = function()
 	--[===[
 			-- Javascript
 			if vim.fn.executable("clang-format") == 1 then
-				load = true
 				sources[#sources+1] = code_actions.eslint.with({
 					command = "eslint",
 					filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
@@ -154,7 +90,6 @@ spec.config = function()
 	-- -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 	-- -- Django ("htmldjango")
 	-- if vim.fn.executable("djlint") == 1 then
-	-- 	load = true
 	-- 	sources[#sources+1] = diagnostics.djlint.with({
 	-- 		command = "djlint",
 	-- 		args = { "$FILENAME" },
@@ -175,10 +110,16 @@ spec.config = function()
 	-- ─────────────────❰ end HOVER ❱─────────────────── --
 	-- ───────────────────────────────────────────────── --
 
+
+
 	-- setup null-ls
-	if load then
-		null.setup({ debug = false, sources = sources })
-	end
+	-- overider the config with user defined one ("~/.config/nvim/lua/override/none-ls.lua")
+	sources = vim.tbl_extend("force", sources, require("override.none-ls").setup(null, installed_packages))
+
+	-- setup mapping
+	require("abstract.utils.map").set_plugin("nvimtools/none-ls.nvim")
+	-- setup null-ls
+	null.setup({ debug = false, sources = sources })
 end
 
 return spec

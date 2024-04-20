@@ -36,7 +36,7 @@ plugin["neovim/nvim-lspconfig"] = {
 	["K"] = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "Show symbol hover information" },
 	-- using 'filipdutescu/renamer.nvim' for rename instead
 	-- ["<Space>rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "" },
-	["<Space>f"] = { "<cmd>lua vim.lsp.buf.format({ timeout_ms = 2000 })<CR>", "Format document" },
+	["<Space>f"] = { "<cmd>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>", "Format document" },
 	["<Space>a"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
 	-- ["<Space>a"]   = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>", "Range code action" },
 	["<Space>r"] = { "<cmd>Telescope lsp_references<CR>", " Lsp references" },
@@ -44,6 +44,10 @@ plugin["neovim/nvim-lspconfig"] = {
 	-- ["<leader>wa"] = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "" },
 	-- ["<leader>wr"] = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "" },
 	-- ["<leader>wl"] = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "" },
+}
+
+plugin["nvimtools/none-ls.nvim"] = {
+	["<Space>f"] = { "<cmd>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>", "Format document" },
 }
 
 -- plugin["ThePrimeagen/harpoon"] = {
