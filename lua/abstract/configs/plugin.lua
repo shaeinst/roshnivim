@@ -2,8 +2,6 @@ return {
 	"colorscheme",
 	"abstract-autocmds",
 	"abstract-cursor",
-	"abstract-line",
-	"abstract-winbar",
 	"alpha-nvim",
 	"autopairs",
 	"cmp",
