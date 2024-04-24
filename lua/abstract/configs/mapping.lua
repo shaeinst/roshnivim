@@ -5,6 +5,7 @@ M.builtin = {
 	-- navigate to previous/next buffer
 	["\\"] = { ":bnext<CR>", "Goto next buffer" },
 	["|"] = { ":bprevious<CR>", "Goto previous buffer" },
+	["??"] = { ":let @/ = ''<CR>", "Clear the last used search pattern" },
 }
 
 plugin["nvim-telescope/telescope.nvim"] = {
