@@ -47,6 +47,15 @@ plugin["neovim/nvim-lspconfig"] = {
 	-- [";wl"] = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "" },
 }
 
+plugin["zbirenbaum/copilot.lua"] = {
+	name = "Copilot",
+	-- mode = "i",
+	["<M-l>"] = { "<cmd>lua require('copilot.suggestion').accept()<CR>", "Accept suggestion (Copilot)" },
+	["<M-h>"] = { "<cmd>lua require('copilot.suggestion').dismiss()<xCR>", "Dismiss suggestion (Copilot)" },
+	["<M-j>"] = { "<cmd>lua require('copilot.suggestion').next()<CR>", "Next suggestion (Copilot)" },
+	["<M-k>"] = { "<cmd>lua require('copilot.suggestion').prev()<CR>", "Previous suggestion (Copilot)" },
+}
+
 plugin["nvimtools/none-ls.nvim"] = {
 	["<Leader>f"] = { "<cmd>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>", "Format document" },
 }
