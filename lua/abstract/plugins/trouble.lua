@@ -1,7 +1,7 @@
 --[[━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ────────────────────────────────────────────────
 Plugin:    trouble.nvim
-Github:    github.com/folke/trouble.nvim
+Github:    https://github.com/folke/trouble.nvim
 
 A pretty diagnostics, references, telescope results, quickfix and
 location list to help you solve all the trouble your code is causing.
@@ -17,12 +17,12 @@ local spec = {
 
 spec.config = function()
 	require("trouble").setup({
-		auto_close = false, -- auto close when there are no items
+		auto_close = true, -- auto close when there are no items
 		auto_open = false, -- auto open when there are items
 		auto_preview = true, -- automatically open preview when on an item
 		auto_refresh = true, -- auto refresh when open
 		auto_jump = false, -- auto jump to the item when there's only one
-		focus = false, -- Focus the window when opened
+		focus = true, -- Focus the window when opened
 		restore = true, -- restores the last location in the list when opening
 		follow = true, -- Follow the current item
 		indent_guides = true, -- show indent guides
@@ -144,9 +144,9 @@ spec.config = function()
 			indent        = {
 				top         = "│ ",
 				middle      = "├╴",
-				last        = "└╴",
+				last        = "╰╴", -- rounded
+				-- last        = "└╴",
 				-- last          = "-╴",
-				-- last       = "╰╴", -- rounded
 				fold_open   = " ",
 				fold_closed = " ",
 				ws          = "  ",
