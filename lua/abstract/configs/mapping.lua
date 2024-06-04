@@ -99,7 +99,7 @@ plugin["cbochs/grapple.nvim"] = {
 }
 
 plugin["folke/trouble.nvim"] = {
-	["<Leader>t"] = { "<cmd>TroubleToggle<cr>", "Trouble(toggle)" },
+	["<Leader>t"] = { "<cmd>Trouble diagnostics toggle<cr>", "Diagnostics (Trouble)" },
 }
 
 plugin["nvim-neo-tree/neo-tree.nvim"] = {
