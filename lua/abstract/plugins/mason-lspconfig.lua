@@ -73,6 +73,19 @@ local function mason_lspconfig(hook)
 				},
 			})
 		end,
+		["pyright"] = function()
+			set_lspconfig("pyright", {
+				settings = {
+					python = {
+						analysis = {
+							autoSearchPaths = true,
+							diagnosticMode = "workspace", -- options: "workspace" | "openFilesOnly"
+							useLibraryCodeForTypes = true,
+						},
+					},
+				},
+			})
+		end,
 		["yamlls"] = function()
 			set_lspconfig("yamlls", {
 				settings = {
