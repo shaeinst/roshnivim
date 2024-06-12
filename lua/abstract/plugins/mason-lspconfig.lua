@@ -26,7 +26,26 @@ local function mason_lspconfig(hook)
 		lspconfig[server].setup(lsp_options)
 	end
 
-	local server_config = {
+	local server_config = {}
+
+	-- some lsp comes with toolchain so we need configure them separately
+	server_config.toolchain_server = {
+		["sourcekit"] = {
+			executable = "swift",
+			config = {
+				capabilities = {
+					workspace = {
+						didChangeWatchedFiles = {
+							dynamicRegistration = true,
+						},
+					},
+				},
+			},
+		},
+	}
+
+	-- and this one is for installed lsp
+	server_config.installed_server = {
 		function(server_name)
 			set_lspconfig(server_name, {})
 		end,
@@ -40,11 +59,18 @@ local function mason_lspconfig(hook)
 			require("typescript-tools").setup(hook)
 		end,
 		["html"] = function()
-			set_lspconfig("html", { filetypes = { "html", "htmldjango" } })
+			set_lspconfig("html", {
+				filetypes = { "html", "htmldjango" },
+			})
 		end,
 		["jsonls"] = function()
 			set_lspconfig("jsonls", {
-				settings = { json = { schemas = require("schemastore").json.schemas(), validate = { enable = true } } },
+				settings = {
+					json = {
+						schemas = require("schemastore").json.schemas(),
+						validate = { enable = true },
+					},
+				},
 			})
 		end,
 		["yamlls"] = function()
@@ -65,16 +91,41 @@ local function mason_lspconfig(hook)
 		end,
 		["cssls"] = function()
 			set_lspconfig("cssls", {
-				capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } },
+				capabilities = {
+					textDocument = {
+						completion = {
+							completionItem = {
+								snippetSupport = true,
+							},
+						},
+					},
+				},
+			})
+		end,
+		["sourcekit"] = function()
+			set_lspconfig("sourcekit", {
+				capabilities = {
+					workspace = {
+						didChangeWatchedFiles = {
+							dynamicRegistration = true,
+						},
+					},
+				},
 			})
 		end,
 	}
 
 	-- override with user defined config ("~/.config/nvim/lua/override/lsp.lua")
 	local user_config = require("override.lsp").setup(lspconfig)
-	server_config = vim.tbl_extend("force", server_config, user_config)
+	server_config = vim.tbl_deep_extend("force", server_config, user_config)
 
-	return server_config
+	for server, server_setup in pairs(server_config.toolchain_server) do
+		if vim.fn.executable(server_setup.executable) == 1 then
+			set_lspconfig(server, server_setup.config)
+		end
+	end
+
+	return server_config.installed_server
 end
 
 spec.config = function()
