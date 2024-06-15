@@ -79,7 +79,7 @@ local function mason_lspconfig(hook)
 					python = {
 						analysis = {
 							autoSearchPaths = true,
-							diagnosticMode = "workspace", -- options: "workspace" | "openFilesOnly"
+							-- diagnosticMode = "workspace", -- options: "workspace" | "openFilesOnly"
 							useLibraryCodeForTypes = true,
 						},
 					},
