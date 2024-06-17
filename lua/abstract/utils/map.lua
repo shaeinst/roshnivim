@@ -1,26 +1,30 @@
 local M = {}
 
 function M.set_plugin(name)
-	local mapping = require("abstract.configs.mapping").plugin[name]
-	vim.g.MAPPINGS = vim.tbl_extend("keep", vim.g.MAPPINGS, mapping)
-	vim.api.nvim_command("doautocmd User AbstractLoadMapping")
-end
+	local register = require("which-key").register
+	local plugin_map = require("abstract.configs.mapping").plugin[name]
 
-function M.set_map(maps)
-	local import, wk = pcall(require, "which-key")
-	if import then
-		local opts = {
-			mode = "n", -- NORMAL mode
-			-- prefix: use "<leader>f" for example for mapping everything related to finding files
-			-- the prefix is prepended to every mapping part of `mappings`
-			prefix = "",
-			buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-			silent = true, -- use `silent` when creating keymaps
-			noremap = true, -- use `noremap` when creating keymaps
-			nowait = false, -- use `nowait` when creating keymaps
-			expr = false, -- use `expr` when creating keymaps
-		}
-		wk.register(maps, opts)
+	register(plugin_map.maps, plugin_map.opts)
+
+	-- only set the users maps once
+	if vim.g.ABSTRACT_SET_MAPS == nil then
+		for _, get in ipairs(require("abstract.configs.mapping").builtin) do
+			register(get.maps, get.opts)
+		end
+		local user_maps = require("override.mapping") -- "~/.config/nvim/lua/override/mapping.lua"
+		for _, get in ipairs(user_maps) do
+			register(get.maps, get.opts)
+		end
+		vim.g.ABSTRACT_MAPS = user_maps
+		vim.g.ABSTRACT_SET_MAPS = true
+	end
+
+	-- some plugins like lspconfig and copilot takes time to load so for this we are using
+	-- custom option is_lazy to explicitly know that we need to again set the users maps.
+	if plugin_map.opts.is_lazy then
+		for _, get in ipairs(vim.g.ABSTRACT_MAPS) do
+			register(get.maps, get.opts)
+		end
 	end
 end
 
