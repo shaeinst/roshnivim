@@ -51,12 +51,11 @@ local function mason_lspconfig(hook)
 		end,
 		["rust_analyzer"] = function()
 			-- Rust LSP is maintained by https://github.com/mrcjkb/rustaceanvim
-			vim.g.rustaceanvim = { server = hook }
+			require("abstract.plugins.rustaceanvim").setup(hook)
 		end,
 		["tsserver"] = function()
 			-- Typescript LSP is maintained by https://github.com/pmizio/typescript-tools.nvim
-			vim.list_extend(hook, require("abstract.plugins.typescript-tools").settings)
-			require("typescript-tools").setup(hook)
+			require("abstract.plugins.typescript-tools").setup(hook)
 		end,
 		["html"] = function()
 			set_lspconfig("html", {

@@ -16,8 +16,15 @@ local spec = {
 	ft = { "rust" },
 }
 
-spec.config = function()
-	--
+spec.setup = function(hook)
+	vim.g.rustaceanvim = {
+		server = hook,
+		tools = {
+			float_win_config = {
+				border = "rounded",
+			},
+		},
+	}
 end
 
 return spec
