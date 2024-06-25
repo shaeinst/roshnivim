@@ -114,17 +114,6 @@ local function mason_lspconfig(hook)
 				},
 			})
 		end,
-		["sourcekit"] = function()
-			set_lspconfig("sourcekit", {
-				capabilities = {
-					workspace = {
-						didChangeWatchedFiles = {
-							dynamicRegistration = true,
-						},
-					},
-				},
-			})
-		end,
 	}
 
 	-- override with user defined config ("~/.config/nvim/lua/override/lsp.lua")
