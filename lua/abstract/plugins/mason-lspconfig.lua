@@ -117,7 +117,7 @@ local function mason_lspconfig(hook)
 	}
 
 	-- override with user defined config ("~/.config/nvim/lua/override/lsp.lua")
-	local user_config = require("override.lsp").setup(lspconfig)
+	local user_config = require("override.lsp").setup(set_lspconfig)
 	server_config = vim.tbl_deep_extend("force", server_config, user_config)
 
 	for server, server_setup in pairs(server_config.toolchain_server) do
