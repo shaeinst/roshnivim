@@ -1,5 +1,3 @@
-<br/>
-
 <p align="center">
  <img src="https://user-images.githubusercontent.com/41078534/175897440-adaa1da8-08d9-4f6a-9d80-f687b4e296e6.svg" height="400 widht="400" >
 </p>
@@ -20,17 +18,17 @@
 
 * [About](#about)
 * [Documentaton](#documentaton)
-* [Project Stracture](#project-stracture)
+* [Known Bugs](#known-bugs)
 * [License](#license)
 * [Screenshots](#screenshots)
-* [To-do](#to-do)
+
 
 
 ## About
 
 Abstract, The NeoVim configuration to achieve the power of Modern IDE
 
-![2022-07-25_20-56](https://user-images.githubusercontent.com/41078534/180812465-8e65807c-a25e-4bc6-8abd-38d32538259e.png)
+![2024-06-29_13-01](https://github.com/Abstract-IDE/Abstract/assets/41078534/b64855a7-d58a-4642-ac1f-bf5fc06b4248)
 
 
 
@@ -39,27 +37,9 @@ more about Abstract and installation can be found on [DOCS](https://abstract-ide
 
 
 
-### Project Stracture
+## Known Bugs
 
-```
-├── extra/
-│   └── snippets/                  / custom defined snippets
-│   ...
-├── init.lua                       / load/source configs | heart of Abstract
-├── lua/
-│   ├── autocmd.lua                / auto command configs
-│   ├── configs.lua                / configs that's don't depends on plugins
-│   ├── mappings.lua               / mappings that don't depends on plugins
-│   ├── packer_nvim.lua            / manage plugins
-│   ├── customs/
-│   │   ├── override_defalut.lua   / configs to override defined config
-│   │   └── abstractline.lua         / i am working on it. btw it's a status line
-│   └── plugins/                   / dir containing configs for plugins. each plugin has it's own config and can be locaed through init.lua file
-│   ...
-├── plugin/                        / auto-created by plugin manager
-└── setup.py                       / python-script to install/update Abstract
-```
-
+- there is no known bugs yet. Please open the issue if you find one.
 
 
 ## License
@@ -68,25 +48,10 @@ Distributed under the MIT License.
 <br><br>
 
 
-
 ## Screenshots
-   ![screenshot_buff_and_nerdtree](https://user-images.githubusercontent.com/41078534/177386049-93fc7a75-2f23-4d53-92a3-9ce8999283bf.png)
-   ![screenshot_python_lsp](https://user-images.githubusercontent.com/41078534/177386239-f77ea88e-a934-4979-8806-017f39225e9d.png)
-   ![screenshot_running_c](https://user-images.githubusercontent.com/41078534/177386287-53ea37a3-6349-40f6-b0f3-fcb5942fdb8f.png)
-   ![screenshot_telescope_as_fuzzy_finder](https://user-images.githubusercontent.com/41078534/177386330-4863acdb-9c66-4f68-9b6a-96f379becf05.png)
-   ![screenshot_packer](https://user-images.githubusercontent.com/41078534/177386379-955c7ddf-8750-4497-8e94-1d4fde28d6da.png)
-   ![screenshot_codeaction_in_flutter_app](https://user-images.githubusercontent.com/41078534/177386497-bb984c56-9bf2-40e5-a9df-88f87767feb0.png)
+![2024-06-29_12-46](https://github.com/Abstract-IDE/Abstract/assets/41078534/b9c63f28-e64b-4c46-b63e-6f8919289b3c)
+![2024-06-29_12-46_1](https://github.com/Abstract-IDE/Abstract/assets/41078534/270fab7c-0648-4f1f-b0d5-42f0efd622ad)
+![2024-06-29_12-44_1](https://github.com/Abstract-IDE/Abstract/assets/41078534/1585fb8c-50b2-4b6f-8c76-1a4cf9da3d5a)
+![2024-06-29_12-47](https://github.com/Abstract-IDE/Abstract/assets/41078534/92729a92-85f3-468f-bab4-dd0d455ad215)
+![2024-06-29_12-53](https://github.com/Abstract-IDE/Abstract/assets/41078534/4b5c2de7-c13d-4671-8d55-fd28a078faf5)
 <br>
-
-
-
-## To-Do
-
-- add installer(setup.py) support for Windows and Mac os
-
-
-
-## Known Bugs
-
-- there is no known bugs yet. Please open the issue if you find one.
-
