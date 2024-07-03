@@ -66,7 +66,7 @@ plugin["neovim/nvim-lspconfig"] = {
 		["<Leader>f"] = { "<cmd>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>", "Format document" },
 		["<Leader>a"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
 		-- ["<Leader>a"]   = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>", "Range code action" },
-		["<Leader>r"] = { "<cmd>Telescope lsp_references<CR>", " Lsp references" },
+		["<Leader>r"] = { "<cmd>Telescope lsp_references<CR>", "Lsp references" },
 
 		-- [";wa"] = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "" },
 		-- [";wr"] = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "" },
@@ -137,10 +137,11 @@ plugin["cbochs/grapple.nvim"] = {
 			},
 			"+Grapple",
 		},
-		["<Leader>1"] = { "<cmd>Grapple select index=1<cr>", "Grapple select 1" },
-		["<Leader>2"] = { "<cmd>Grapple select index=2<cr>", "Grapple select 2" },
-		["<Leader>3"] = { "<cmd>Grapple select index=3<cr>", "Grapple select 3" },
-		["<Leader>4"] = { "<cmd>Grapple select index=4<cr>", "Grapple select 4" },
+		["<M-1>"] = { "<cmd>Grapple select index=1<cr>", "Grapple select 1" },
+		["<M-2>"] = { "<cmd>Grapple select index=2<cr>", "Grapple select 2" },
+		["<M-3>"] = { "<cmd>Grapple select index=3<cr>", "Grapple select 3" },
+		["<M-4>"] = { "<cmd>Grapple select index=4<cr>", "Grapple select 4" },
+		["<M-5>"] = { "<cmd>Grapple select index=5<cr>", "Grapple select 5" },
 	},
 }
 
