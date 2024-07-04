@@ -3,6 +3,7 @@ return {
 	"abstract-cursor",
 	"alpha-nvim",
 	"autopairs",
+	"bufdelete",
 	"cmp",
 	"colorizer",
 	"colorscheme",

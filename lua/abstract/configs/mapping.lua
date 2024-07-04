@@ -252,6 +252,15 @@ plugin["anuvyklack/windows.nvim"] = {
 	},
 }
 
+plugin["famiu/bufdelete.nvim"] = {
+	opts = {
+		mode = "n",
+	},
+	maps = {
+		["<M-q>q"] = { "<cmd>lua require('bufdelete').bufwipeout(0)<CR>", "close current buffer without killing windows" },
+	},
+}
+
 M.plugin = plugin
 
 return M
