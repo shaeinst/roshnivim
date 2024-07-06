@@ -26,6 +26,7 @@ return {
 	"neo-tree",
 	"none-ls",
 	"nvim-bqf",
+	"nvim-java",
 	"oil",
 	"penvim",
 	"renamer",

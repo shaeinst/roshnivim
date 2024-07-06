@@ -57,6 +57,11 @@ local function mason_lspconfig(hook)
 			-- Typescript LSP is maintained by https://github.com/pmizio/typescript-tools.nvim
 			require("abstract.plugins.typescript-tools").setup(hook)
 		end,
+		["jdtls"] = function()
+			-- Java LSP is maintained by https://github.com/nvim-java/nvim-java
+			require("abstract.plugins.nvim-java").setup()
+			set_lspconfig("jdtls", {})
+		end,
 		["html"] = function()
 			set_lspconfig("html", {
 				filetypes = { "html", "htmldjango" },
@@ -129,7 +134,7 @@ local function mason_lspconfig(hook)
 	return server_config.installed_server
 end
 
-spec.config = function()
+spec.setup = function()
 	local hook = require("abstract.plugins.lspconfig").config()
 	require("mason-lspconfig").setup({
 		-- A list of servers to automatically install if they're not already installed. Example: { "rust_analyzer@nightly", "lua_ls" }
