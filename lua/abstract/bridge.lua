@@ -1,6 +1,6 @@
 local M = {}
 
-local function lazy()
+local lazy = function()
 	-- bootstrap lazy.nvim
 	local opts = require("abstract.plugins.lazy").opts
 	local install_path = opts.root .. "/lazy.nvim"
@@ -21,6 +21,16 @@ local function lazy()
 	require("lazy").setup(opts)
 end
 
+local map = function()
+	local add = require("which-key").add
+	for _, map_ in ipairs(require("abstract.configs.mapping").builtin) do
+		add(map_)
+	end
+	for _, map_ in ipairs(require("override.mapping")) do
+		add(map_)
+	end
+end
+
 function M.setup()
 	-- call abstract autocmds
 	require("abstract.configs.autocmd")
@@ -29,6 +39,7 @@ function M.setup()
 	-- Override Abstract's default with user config
 	dofile(vim.fn.stdpath("config") .. "/init.lua")
 	lazy()
+	map()
 end
 
 return M

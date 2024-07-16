@@ -71,7 +71,7 @@ local hook = {
 			end
 		end
 		-- Enable Mappings
-		require("abstract.utils.map").set_plugin("neovim/nvim-lspconfig")
+		require("abstract.utils.map").set_plugin("neovim/nvim-lspconfig", true)
 	end,
 	capabilities = (function()
 		local _capabilities = vim.lsp.protocol.make_client_capabilities()

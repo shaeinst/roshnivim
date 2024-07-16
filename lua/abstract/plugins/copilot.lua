@@ -18,7 +18,7 @@ local spec = {
 }
 
 spec.config = function()
-	require("abstract.utils.map").set_plugin("zbirenbaum/copilot.lua")
+	require("abstract.utils.map").set_plugin("zbirenbaum/copilot.lua", true)
 	require("copilot").setup({
 		panel = {
 			enabled = true,
