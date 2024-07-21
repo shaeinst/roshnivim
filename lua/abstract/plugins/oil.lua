@@ -1,11 +1,13 @@
---[[━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--[[
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ────────────────────────────────────────────────
 Plugin: oil.nvim
 Github: https://github.com/stevearc/oil.nvim
 
 Neovim file explorer: edit your filesystem like a buffer
 ────────────────────────────────────────────────
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━]]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--]]
 
 local spec = {
 	"stevearc/oil.nvim",
@@ -161,7 +163,7 @@ spec.config = function()
 			["g\\"] = "actions.toggle_trash",
 		},
 	})
-	require("abstract.utils.map").set_plugin("stevearc/oil.nvim")
+	require("abstract.utils.map").set_map("stevearc/oil.nvim")
 end
 
 return spec

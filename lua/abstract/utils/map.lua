@@ -1,6 +1,6 @@
 local M = {}
 
-M.set_plugin = function(name, lazy)
+M.set_map = function(name, lazy)
 	local add = require("which-key").add
 	local plugin_map = require("abstract.configs.mapping").plugin[name]
 	add(plugin_map)

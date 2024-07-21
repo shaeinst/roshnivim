@@ -19,7 +19,7 @@ local spec = {
 }
 
 spec.config = function()
-	require("abstract.utils.map").set_plugin("nvim-neo-tree/neo-tree.nvim")
+	require("abstract.utils.map").set_map("nvim-neo-tree/neo-tree.nvim")
 	require("neo-tree").setup({
 		close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
 		popup_border_style = "rounded",

@@ -18,13 +18,12 @@ local spec = {
 }
 
 spec.config = function()
-	local hop = require("hop")
-	hop.setup({
+	require("hop").setup({
 		keys = "qwertyuiopasdfghjklzxcvbnm",
 		jump_on_sole_occurrence = false,
 	})
 
-	require("abstract.utils.map").set_plugin("smoka7/hop.nvim")
+	require("abstract.utils.map").set_map("smoka7/hop.nvim")
 end
 
 return spec

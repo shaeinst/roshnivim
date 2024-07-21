@@ -106,8 +106,8 @@ spec.config = function()
 	-- At default, neovim only display tabline when there are at least two tab pages. If you want always display tabline:
 	vim.o.showtabline = 1
 
-	require("abstract.utils.map").set_plugin("nanozuki/tabby.nvim")
 	require("tabby.tabline").set(view, opt)
+	require("abstract.utils.map").set_map("nanozuki/tabby.nvim")
 end
 
 return spec

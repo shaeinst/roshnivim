@@ -1,4 +1,5 @@
---[[━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--[[
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ────────────────────────────────────────────────
 Plugin:    goto-preview
 Github:    https://github.com/rmagatti/goto-preview
@@ -6,7 +7,8 @@ Github:    https://github.com/rmagatti/goto-preview
 A small Neovim plugin for previewing native LSP's goto definition, type definition,
 implementation, declaration and references calls in floating windows.
 ────────────────────────────────────────────────
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━]]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--]]
 
 local spec = {
 	"rmagatti/goto-preview",
@@ -28,6 +30,7 @@ spec.config = function()
 			local buffer_num = vim.api.nvim_get_current_buf() -- current buffer
 			vim.api.nvim_buf_set_option(buffer_num, "buflisted")
 		end,
+		post_close_hook = nil, -- A function taking two arguments, a buffer and a window to be ran as a hook.
 		references = { -- Configure the telescope UI for showing the references cycling window.
 			telescope = require("telescope.themes").get_dropdown({
 				winblend = 15,
@@ -42,9 +45,12 @@ spec.config = function()
 		dismiss_on_move = false, -- Dismiss the floating window when moving the cursor.
 		force_close = true, -- passed into vim.api.nvim_win_close's second argument. See :h nvim_win_close
 		bufhidden = "wipe", -- the bufhidden option to set on the floating window. See :h bufhidden
+		stack_floating_preview_windows = true, -- Whether to nest floating windows
+		preview_window_title = { enable = true, position = "left" }, -- Whether to set the preview window title as the filename
+		zindex = 1, -- Starting zindex for the stack of floating windows
 	})
 
-	require("abstract.utils.map").set_plugin("rmagatti/goto-preview")
+	require("abstract.utils.map").set_map("rmagatti/goto-preview")
 end
 
 return spec

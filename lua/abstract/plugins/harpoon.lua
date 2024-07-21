@@ -43,7 +43,7 @@ spec.config = function()
 		harpoon.ui:toggle_quick_menu(Harpoon_List)
 	end
 
-	require("abstract.utils.map").set_plugin("ThePrimeagen/harpoon")
+	require("abstract.utils.map").set_map("ThePrimeagen/harpoon")
 end
 
 return spec

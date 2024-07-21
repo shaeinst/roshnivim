@@ -21,5 +21,4 @@ local spec = {
 	opts = {},
 }
 
-
 return spec

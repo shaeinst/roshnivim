@@ -1,4 +1,5 @@
---[[━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--[[
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ────────────────────────────────────────────────
 Plugin: telescope.nvim
 Github: https://github.com/nvim-telescope/telescope.nvim
@@ -7,7 +8,8 @@ telescope.nvim is a highly extendable fuzzy finder over lists.
 Built on the latest awesome features from neovim core. Telescope
 is centered around modularity, allowing for easy customization.
 ────────────────────────────────────────────────
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━]]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--]]
 
 local spec = {
 	"nvim-telescope/telescope.nvim",
@@ -25,8 +27,6 @@ local spec = {
 }
 
 spec.config = function()
-	require("abstract.utils.map").set_plugin("nvim-telescope/telescope.nvim")
-
 	local telescope = require("telescope")
 	local actions = require("telescope.actions")
 	local action_layout = require("telescope.actions.layout")
@@ -79,7 +79,7 @@ spec.config = function()
 			color_devicons = true,
 			use_less = true,
 			set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-			path_display = { "truncate" },    -- How file paths are displayed ()
+			path_display = { "truncate" }, -- How file paths are displayed ()
 
 			preview = {
 				msg_bg_fillchar = " ",
@@ -139,6 +139,8 @@ spec.config = function()
 	telescope.load_extension("media_files")
 	telescope.load_extension("ui-select")
 	telescope.load_extension("project")
+
+	require("abstract.utils.map").set_map("nvim-telescope/telescope.nvim")
 end
 
 return spec

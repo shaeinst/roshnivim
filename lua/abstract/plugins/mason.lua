@@ -65,7 +65,7 @@ local mason_config = {
 }
 
 spec.config = function(_, opts)
-	require('mason').setup(vim.tbl_deep_extend('keep', opts, mason_config))
+	require("mason").setup(vim.tbl_deep_extend("keep", opts, mason_config))
 	require("abstract.plugins.mason-lspconfig").setup()
 	require("abstract.plugins.none-ls").setup()
 end

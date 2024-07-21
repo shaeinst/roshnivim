@@ -17,7 +17,7 @@ local spec = {
 }
 
 spec.config = function()
-	require("abstract.utils.map").set_plugin("famiu/bufdelete.nvim")
+	require("abstract.utils.map").set_map("famiu/bufdelete.nvim")
 end
 
 

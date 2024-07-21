@@ -28,7 +28,7 @@ spec.config = function()
 			filetype = { "NvimTree", "neo-tree", "undotree", "gundo" },
 		},
 	})
-	require("abstract.utils.map").set_plugin("anuvyklack/windows.nvim")
+	require("abstract.utils.map").set_map("anuvyklack/windows.nvim")
 end
 
 return spec

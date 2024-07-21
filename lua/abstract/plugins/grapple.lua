@@ -30,7 +30,7 @@ spec.config = function()
 		---@type "basename" | "relative"
 		style = "basename",
 	})
-	require("abstract.utils.map").set_plugin("cbochs/grapple.nvim")
+	require("abstract.utils.map").set_map("cbochs/grapple.nvim")
 end
 
 return spec

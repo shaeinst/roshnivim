@@ -126,10 +126,12 @@ plugin["Shatur/neovim-session-manager"] = {
 
 plugin["rmagatti/goto-preview"] = {
 	{ "gp",  group = "Goto Preview" },
-	{ "gpd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",     desc = "Preview definition" },
-	{ "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", desc = "Preview definition" },
-	{ "gpr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>",     desc = "Preview definition" },
-	{ "gpQ", "<cmd>lua require('goto-preview').close_all_win()<CR>",               desc = "Close all window" },
+	{ "gpd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",      desc = "Preview definition" },
+	{ "gpt", "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", desc = "Preview type definition" },
+	{ "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",  desc = "Preview definition" },
+	{ "gpD", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>",     desc = "Preview declaration" },
+	{ "gpr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>",      desc = "Preview definition" },
+	{ "gpQ", "<cmd>lua require('goto-preview').close_all_win()<CR>",                desc = "Close all window" },
 }
 
 plugin["anuvyklack/windows.nvim"] = {

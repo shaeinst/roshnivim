@@ -5,9 +5,6 @@ Plugin:    renamer.nvim
 Github:    https://github.com/filipdutescu/renamer.nvim
 
 VS Code-like renaming UI for Neovim, writen in Lua.
-
-WARN!:
-since renamer.mvim depends on lsp, its setup is called in lspconfig.lua instead of here
 ─────────────────────────────────────────────────
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 --]]

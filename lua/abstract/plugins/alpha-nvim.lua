@@ -1,17 +1,19 @@
---[[━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--[[
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ────────────────────────────────────────────────
 Plugin:    alpha-nvim
 Github:    https://github.com/goolord/alpha-nvim
 
 a lua powered greeter like vim-startify / dashboard-nvim
 ────────────────────────────────────────────────
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━]]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--]]
 
 local spec = {
 	"goolord/alpha-nvim",
 }
 
-local function footer()
+local footer = function()
 	local _datetime, datetime = pcall(os.date, " %I:%M:%p (%d-%m-%Y)")
 	local version = vim.version()
 	local nvim_verion = string.format("v%d.%d.%d ", version.major, version.minor, version.patch)

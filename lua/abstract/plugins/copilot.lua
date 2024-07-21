@@ -51,7 +51,7 @@ spec.config = function()
 		copilot_node_command = "node", -- Node.js version must be > 18.x
 		server_opts_overrides = {},
 	})
-	require("abstract.utils.map").set_plugin("zbirenbaum/copilot.lua", true)
+	require("abstract.utils.map").set_map("zbirenbaum/copilot.lua", true)
 end
 
 return spec

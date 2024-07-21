@@ -17,7 +17,7 @@ spec.config = function()
 		--
 		-- flutter-tools setup settings goes here
 		--
-	}, { lsp = require("abstract.plugins.lspconfig").config() }))
+	}, { lsp = require("abstract.plugins.lspconfig").setup() }))
 end
 
 return spec

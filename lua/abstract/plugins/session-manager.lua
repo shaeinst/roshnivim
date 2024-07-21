@@ -17,8 +17,6 @@ local spec = {
 }
 
 spec.config = function()
-	require("abstract.utils.map").set_plugin("Shatur/neovim-session-manager")
-
 	require("session_manager").setup({
 		sessions_dir = vim.fn.stdpath("data") .. "/.cache/sessions", -- The directory where the session files will be saved.
 		path_replacer = "__", -- The character to which the path separator will be replaced for session files.
@@ -43,6 +41,8 @@ spec.config = function()
 	-- 		require('nvim-tree').toggle(false, true)
 	-- 	end,
 	-- })
+
+	require("abstract.utils.map").set_map("Shatur/neovim-session-manager")
 end
 
 return spec
