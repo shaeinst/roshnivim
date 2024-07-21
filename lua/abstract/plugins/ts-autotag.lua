@@ -11,20 +11,15 @@ Github:    github.com/windwp/nvim-ts-autotag
 
 local spec = {
 	"windwp/nvim-ts-autotag",
-	event = "InsertEnter",
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter",
-	},
+	event = { "InsertEnter", "LspAttach" },
 	-- stylua: ignore
 	ft = {
 		"astro", "glimmer", "handlebars", "hbs", "html", "javascript",
 		"javascriptreact", "jsx", "markdown", "php", "rescript",
 		"svelte", "tsx", "typescript", "typescriptreact", "vue", "xml",
 	},
+	opts = {},
 }
 
-spec.config = function()
-	require("nvim-ts-autotag").setup()
-end
 
 return spec

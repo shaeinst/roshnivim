@@ -1,20 +1,24 @@
 --[[
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ─────────────────────────────────────────────────
-Plugin: abstract-line
-Github: https://github.com/Abstract-IDE/abstract-line
+Plugin:    nvim-web-devicons
+Github:    https://github.com/nvim-tree/nvim-web-devicons
 
-status line for Abstract-IDE
+
+A lua fork of vim-devicons.
+This plugin provides the same icons as well as colors for each icon.
+Light and dark color variants are provided.
 ─────────────────────────────────────────────────
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 --]]
 
 local spec = {
-	"Abstract-IDE/abstract-line",
+	"nvim-tree/nvim-web-devicons",
+	lazy = true,
 }
 
 spec.config = function()
-	require("abstract-line").setup()
+	require("nvim-web-devicons").get_icons()
 end
 
 return spec

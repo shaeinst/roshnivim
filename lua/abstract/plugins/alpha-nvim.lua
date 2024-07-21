@@ -9,10 +9,6 @@ a lua powered greeter like vim-startify / dashboard-nvim
 
 local spec = {
 	"goolord/alpha-nvim",
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-		"nvim-lua/plenary.nvim",
-	},
 }
 
 local function footer()

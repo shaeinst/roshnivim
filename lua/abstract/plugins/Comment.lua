@@ -12,7 +12,6 @@ Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more
 
 local spec = {
 	"numToStr/Comment.nvim",
-	dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
 	keys = { "cc", "gc", "gb", { "cc", mode = "v" }, { "gc", mode = "v" }, { "gb", mode = "v" } },
 }
 

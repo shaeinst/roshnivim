@@ -22,7 +22,7 @@ end
 
 -- By default, Tabby counts all windows, resulting in the same name being repeatedly displayed.
 -- This function addresses the issue by merging the duplicates.
-local function wins_in_tab(line, theme)
+local wins_in_tab = function(line, theme)
 	local unique_buffers = {}
 
 	return line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)

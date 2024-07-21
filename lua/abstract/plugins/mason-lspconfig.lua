@@ -1,4 +1,5 @@
---[[━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--[[
+--━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ────────────────────────────────────────────────
 Plugin:    mason-lspconfig.nvim
 Github:    https://github.com/williamboman/mason-lspconfig.nvim
@@ -8,17 +9,15 @@ Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim.
 Resources:
 https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 ────────────────────────────────────────────────
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━]]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--]]
 
 local spec = {
 	"williamboman/mason-lspconfig.nvim",
 	lazy = true,
-	dependencies = {
-		"b0o/SchemaStore.nvim", -- A Neovim Lua plugin providing access to the SchemaStore catalog.
-	},
 }
 
-local function mason_lspconfig(hook)
+local mason_lspconfig = function(hook)
 	local lspconfig = require("lspconfig")
 
 	local function set_lspconfig(server, options)
@@ -135,7 +134,7 @@ local function mason_lspconfig(hook)
 end
 
 spec.setup = function()
-	local hook = require("abstract.plugins.lspconfig").config()
+	local hook = require("abstract.plugins.lspconfig").setup()
 	require("mason-lspconfig").setup({
 		-- A list of servers to automatically install if they're not already installed. Example: { "rust_analyzer@nightly", "lua_ls" }
 		-- This setting has no relation with the `automatic_installation` setting.

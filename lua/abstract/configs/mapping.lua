@@ -35,7 +35,8 @@ plugin["neovim/nvim-lspconfig"] = {
 	-- { "<Leader>h",  "<Cmd>lua vim.lsp.buf.hover()<CR>",                       desc = "Show symbol hover information" },
 	{ "K",         "<Cmd>lua vim.lsp.buf.hover()<CR>",                       desc = "Show symbol hover information" },
 	-- using 'filipdutescu/renamer.nvim' for rename instead
-	-- { "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>",                      desc = "" },
+	-- { "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>",                      desc = "Rename symbol" },
+	{ "<Leader>R", "<cmd>lua require('renamer').rename()<cr>",               desc = "Rename symbol" },
 	{ "<Leader>f", "<cmd>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>", desc = "Format document" },
 	{ "<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>",                 desc = "Code action" },
 	-- { "<Leader>a",  "<cmd>lua vim.lsp.buf.range_code_action()<CR>",           desc = "Range code action" },
@@ -113,10 +114,6 @@ plugin["nanozuki/tabby.nvim"] = {
 	{ ";.",       ":+tabmove<CR>", desc = "Move tab to previous position" },
 }
 
-plugin["filipdutescu/renamer.nvim"] = {
-	{ "<Leader>R", "<cmd>lua require('renamer').rename()<cr>", desc = "Rename symbol" },
-}
-
 plugin["smoka7/hop.nvim"] = {
 	{ "f", "<cmd>lua require'hop'.hint_words()<cr>", desc = "Jump anywhere" },
 }
@@ -141,6 +138,10 @@ plugin["anuvyklack/windows.nvim"] = {
 
 plugin["famiu/bufdelete.nvim"] = {
 	{ "<M-q>q", "<cmd>lua require('bufdelete').bufwipeout(0)<CR>", desc = "close current buffer without killing windows" },
+}
+
+plugin["stevearc/oil.nvim"] = {
+	{ "-", "<CMD>Oil<CR>", desc = "Open parent directory" },
 }
 
 M.plugin = plugin

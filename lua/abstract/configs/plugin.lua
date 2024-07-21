@@ -1,4 +1,11 @@
-return {
+local M = {}
+
+M.deps = {
+	"plenary",
+	"web-devicons",
+}
+
+M.plugins = {
 	"abstract-autocmds",
 	"abstract-cursor",
 	"alpha-nvim",
@@ -22,6 +29,7 @@ return {
 	"lspconfig",
 	"LuaSnip",
 	"mason",
+	"mason-lspconfig",
 	"navic",
 	"neo-tree",
 	"none-ls",
@@ -41,7 +49,8 @@ return {
 	"ts-autotag",
 	"ts-context-commentstring",
 	"typescript-tools",
-	"web-devicons",
 	"which-key",
 	"windows",
 }
+
+return M

@@ -14,9 +14,6 @@ local spec = {
 	"cbochs/grapple.nvim",
 	event = { "BufReadPost", "BufNewFile" },
 	cmd = "Grapple",
-	dependencies = {
-		{ "nvim-tree/nvim-web-devicons", lazy = true },
-	},
 }
 
 spec.config = function()

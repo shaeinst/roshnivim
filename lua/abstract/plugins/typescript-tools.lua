@@ -11,10 +11,7 @@ Github:    https://github.com/pmizio/typescript-tools.nvim
 
 local spec = {
 	"pmizio/typescript-tools.nvim",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"neovim/nvim-lspconfig",
-	},
+	lazy = true,
 }
 
 spec.setup = function(hook)

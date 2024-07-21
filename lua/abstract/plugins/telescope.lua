@@ -16,7 +16,6 @@ local spec = {
 	-- cmd = { "Telescope" },
 	-- keys = { "t", "<C-f>", "<C-p>" },
 	dependencies = {
-		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-file-browser.nvim",
 		"nvim-telescope/telescope-media-files.nvim",
 		"nvim-telescope/telescope-project.nvim",
@@ -80,7 +79,7 @@ spec.config = function()
 			color_devicons = true,
 			use_less = true,
 			set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-			path_display = { "truncate" }, -- How file paths are displayed ()
+			path_display = { "truncate" },    -- How file paths are displayed ()
 
 			preview = {
 				msg_bg_fillchar = " ",

@@ -1,18 +1,20 @@
---[[━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--[[
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ────────────────────────────────────────────────
-Plugin: nvim-lspconfig
-Github: https://github.com/neovim/nvim-lspconfig
+Plugin:    nvim-lspconfig
+Github:    https://github.com/neovim/nvim-lspconfig
 
 Quickstart configs for Nvim LSP
 ────────────────────────────────────────────────
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━]]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--]]
 
 local spec = {
 	"neovim/nvim-lspconfig",
-	lazy = true,
+	lazy = true
 }
 
-local function lsp_config()
+local lsp_config = function()
 	local handlers = vim.lsp.handlers
 	-- options for lsp diagnostic
 	vim.diagnostic.config({
@@ -52,9 +54,6 @@ end
 local hook = {
 	flags = { debounce_text_changes = 150 },
 	on_attach = function(client, bufnr)
-		-- invoke custom user cmd so that LSP dependent lsp can be lazy loaded
-		-- only after LSP is attached to buffer
-		vim.api.nvim_command("doautocmd User AbstractLSPLoaded")
 		---------------------
 		-- NOTE: integrate with none-ls | null -ls
 		-- Avoiding LSP formatting conflicts
@@ -85,7 +84,7 @@ local hook = {
 	end)(),
 }
 
-spec.config = function()
+spec.setup = function()
 	lsp_config()
 	return hook
 end

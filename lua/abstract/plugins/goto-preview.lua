@@ -10,11 +10,7 @@ implementation, declaration and references calls in floating windows.
 
 local spec = {
 	"rmagatti/goto-preview",
-	lazy = true,
-	event = { "User AbstractLSPLoaded" },
-	dependencies = {
-		"nvim-telescope/telescope.nvim",
-	},
+	event = { "LspAttach" },
 }
 
 spec.config = function()

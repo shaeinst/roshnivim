@@ -11,10 +11,6 @@ Github:    https://github.com/nvimtools/none-ls.nvim
 local spec = {
 	"nvimtools/none-ls.nvim",
 	lazy = true,
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"williamboman/mason-lspconfig.nvim",
-	},
 }
 
 spec.setup = function()

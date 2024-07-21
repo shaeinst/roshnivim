@@ -13,29 +13,27 @@ local spec = {
 	"Abstract-IDE/penvim",
 }
 
-spec.config = function()
-	require("penvim").setup({
+spec.opts = {
 
-		project_env = {
-			enable = true,
-			config_name = ".__nvim__.lua",
-		},
+	project_env = {
+		enable = true,
+		config_name = ".__nvim__.lua",
+	},
 
-		rooter = {
-			enable = true,
-			patterns = { ".__nvim__.lua" },
-		},
+	rooter = {
+		enable = true,
+		patterns = { ".__nvim__.lua" },
+	},
 
-		indentor = {
-			enable = true,
-			indent_length = 4,
-			indent_type = "auto", -- auto|tab|space
-		},
+	indentor = {
+		enable = true,
+		indent_length = 4,
+		indent_type = "auto", -- auto|tab|space
+	},
 
-		-- langs = {
-		-- 	enable = true,
-		-- }
-	})
-end
+	-- langs = {
+	-- 	enable = true,
+	-- }
+}
 
 return spec

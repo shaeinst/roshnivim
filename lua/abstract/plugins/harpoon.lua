@@ -13,10 +13,6 @@ local spec = {
 	"ThePrimeagen/harpoon",
 	-- lazy = true,
 	branch = "harpoon2",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope.nvim",
-	},
 }
 
 spec.config = function()

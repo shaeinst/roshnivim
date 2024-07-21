@@ -14,21 +14,21 @@ local spec = {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {
-		{ "L3MON4D3/LuaSnip" }, -- Snippet Engine for Neovim written in Lua.
-		{ "kawre/neotab.nvim", opts = {} }, -- Simple yet convenient Neovim plugin for tabbing in and out of brackets, parentheses, quotes, and more.
-		{ "hrsh7th/cmp-nvim-lsp" }, -- nvim-cmp source for neovim builtin LSP client
-		{ "hrsh7th/cmp-nvim-lua" }, -- nvim-cmp source for nvim lua
-		{ "hrsh7th/cmp-buffer" }, -- nvim-cmp source for buffer words.
-		{ "hrsh7th/cmp-path" }, -- nvim-cmp source for filesystem paths.
-		{ "saadparwaiz1/cmp_luasnip" }, -- luasnip completion source for nvim-cmp
-		{ "ray-x/cmp-treesitter" }, -- nvim-cmp source for treesitter nodes.
-		{ "hrsh7th/cmp-cmdline" }, -- nvim-cmp source for vim's cmdline.
+		{ "hrsh7th/cmp-buffer",                 lazy = true },      -- nvim-cmp source for buffer words.
+		{ "hrsh7th/cmp-cmdline",                lazy = true },      -- nvim-cmp source for vim's cmdline.
+		{ "hrsh7th/cmp-nvim-lsp",               lazy = true },      -- nvim-cmp source for neovim builtin LSP client
+		{ "hrsh7th/cmp-nvim-lua",               lazy = true },      -- nvim-cmp source for nvim lua
+		{ "hrsh7th/cmp-path",                   lazy = true },      -- nvim-cmp source for filesystem paths.
+		{ "kawre/neotab.nvim",                  lazy = true, opts = {} }, -- Simple yet convenient Neovim plugin for tabbing in and out of brackets, parentheses, quotes, and more.
+		{ "ray-x/cmp-treesitter",               lazy = true },      -- nvim-cmp source for treesitter nodes.
+		{ "saadparwaiz1/cmp_luasnip",           lazy = true },      -- luasnip completion source for nvim-cmp
+		{ 'lukas-reineke/cmp-under-comparator', lazy = true },      -- nvim-cmp comparator function for completion items that start with one or more underlines
 	},
 }
 
 spec.config = function()
+	local luasnip = require("abstract.plugins.LuaSnip").setup()
 	local cmp = require("cmp")
-	local luasnip = require("luasnip")
 	local neotab = require("neotab")
 
 	-- Completions for / search based on current buffer:
@@ -41,6 +41,12 @@ spec.config = function()
 			{ { name = "cmdline", option = { ignore_cmds = { "Man", "!" } } } }
 		),
 	})
+
+	cmp.event:on("confirm_done",
+		-- If you want insert `(` after select function or method item
+		-- https://github.com/windwp/nvim-autopairs?tab=readme-ov-file#you-need-to-add-mapping-cr-on-nvim-cmp-setupcheck-readmemd-on-nvim-cmp-repo
+		require('nvim-autopairs.completion.cmp').on_confirm_done()
+	)
 
 	cmp.setup({
 
@@ -59,6 +65,21 @@ spec.config = function()
 
 		completion = {
 			completeopt = "menu,menuone,noselect,noinsert", -- Set completeopt to have a better completion experience
+		},
+
+		-- https://github.com/lukas-reineke/cmp-under-comparator?tab=readme-ov-file#setup
+		sorting = {
+			comparators = {
+				cmp.config.compare.offset,
+				cmp.config.compare.exact,
+				cmp.config.compare.score,
+				cmp.config.compare.recently_used,
+				require "cmp-under-comparator".under,
+				cmp.config.compare.kind,
+				cmp.config.compare.sort_text,
+				cmp.config.compare.length,
+				cmp.config.compare.order,
+			},
 		},
 
 		snippet = {
@@ -132,7 +153,7 @@ spec.config = function()
 			{ name = "nvim_lua" },
 			{ name = "path" },
 			{ name = "luasnip" },
-			{ name = "buffer", keyword_length = 1 },
+			{ name = "buffer",    keyword_length = 1 },
 			{ name = "treesitter" },
 			-- {name = 'calc'},
 		},

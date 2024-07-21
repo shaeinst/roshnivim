@@ -5,6 +5,9 @@ Plugin:    renamer.nvim
 Github:    https://github.com/filipdutescu/renamer.nvim
 
 VS Code-like renaming UI for Neovim, writen in Lua.
+
+WARN!:
+since renamer.mvim depends on lsp, its setup is called in lspconfig.lua instead of here
 ─────────────────────────────────────────────────
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 --]]
@@ -12,9 +15,7 @@ VS Code-like renaming UI for Neovim, writen in Lua.
 local spec = {
 	"filipdutescu/renamer.nvim",
 	branch = "master",
-	lazy = true,
-	event = { "User AbstractLSPLoaded" },
-	dependencies = { {'nvim-lua/plenary.nvim'} }
+	event = { "LspAttach" },
 }
 
 spec.config = function()
@@ -54,7 +55,6 @@ spec.config = function()
 			["<c-r>"] = mappings_utils.redo,
 		},
 	})
-	require("abstract.utils.map").set_plugin("filipdutescu/renamer.nvim")
 end
 
 return spec

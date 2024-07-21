@@ -12,13 +12,11 @@ complete with API for interacting with Github Copilot
 
 local spec = {
 	"zbirenbaum/copilot.lua",
-	-- lazy = true,
-	-- cmd = "Copilot",
-	-- event = "InsertEnter",
+	lazy = true,
+	event = "InsertEnter",
 }
 
 spec.config = function()
-	require("abstract.utils.map").set_plugin("zbirenbaum/copilot.lua", true)
 	require("copilot").setup({
 		panel = {
 			enabled = true,
@@ -53,6 +51,7 @@ spec.config = function()
 		copilot_node_command = "node", -- Node.js version must be > 18.x
 		server_opts_overrides = {},
 	})
+	require("abstract.utils.map").set_plugin("zbirenbaum/copilot.lua", true)
 end
 
 return spec

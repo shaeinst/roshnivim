@@ -161,8 +161,7 @@ spec.config = function()
 			["g\\"] = "actions.toggle_trash",
 		},
 	})
-
-	vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+	require("abstract.utils.map").set_plugin("stevearc/oil.nvim")
 end
 
 return spec

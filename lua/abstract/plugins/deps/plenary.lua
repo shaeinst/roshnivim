@@ -1,20 +1,18 @@
 --[[
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ─────────────────────────────────────────────────
-Plugin: abstract-line
-Github: https://github.com/Abstract-IDE/abstract-line
+Plugin:    plenary.nvim
+Github:    https://github.com/nvim-lua/plenary.nvim
 
-status line for Abstract-IDE
+ plenary: full; complete; entire; absolute; unqualified.
+ All the lua functions I don't want to write twice.
 ─────────────────────────────────────────────────
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 --]]
 
 local spec = {
-	"Abstract-IDE/abstract-line",
+	"nvim-lua/plenary.nvim",
+	lazy = true,
 }
-
-spec.config = function()
-	require("abstract-line").setup()
-end
 
 return spec
