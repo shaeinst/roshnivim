@@ -44,6 +44,8 @@ M.plugins = {
 	"surround",
 	"tabby",
 	"telescope",
+	"tiny-code-action",
+	"tiny-inline-diagnostic",
 	"treesitter",
 	"trouble",
 	"ts-autotag",

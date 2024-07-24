@@ -11,13 +11,13 @@ Quickstart configs for Nvim LSP
 
 local spec = {
 	"neovim/nvim-lspconfig",
-	lazy = true
+	lazy = true,
 }
 
 local lsp_config = function()
 	local handlers = vim.lsp.handlers
-	-- options for lsp diagnostic
 	vim.diagnostic.config({
+		virtual_text = false,
 		float = {
 			border = "single",
 			focusable = true,
@@ -31,11 +31,11 @@ local lsp_config = function()
 		underline = true,
 		signs = true,
 		update_in_insert = true,
-		virtual_text = {
-			true,
-			spacing = 6,
-			-- severity_limit='Error'  -- Only show virtual text on error
-		},
+		-- virtual_text = {
+		-- 	false,
+		-- 	spacing = 6,
+		-- 	-- severity_limit='Error'  -- Only show virtual text on error
+		-- },
 	})
 	handlers["textDocument/hover"] = vim.lsp.with(handlers.hover, { border = "rounded" })
 	handlers["textDocument/signatureHelp"] = vim.lsp.with(handlers.signature_help, { border = "single" })

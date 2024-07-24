@@ -27,24 +27,24 @@ plugin["neovim/nvim-lspconfig"] = {
 	{ "<Leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>",               desc = "Show diagnostics" },
 	-- { "<Leader>n",  "<cmd>lua vim.diagnostic.goto_next()<CR>",                desc = "Move to next diagnostic" },
 	-- { "<Leader>b",  "<cmd>lua vim.diagnostic.goto_prev()<CR>",                desc = "Move to previous diagnostic" },
+	-- { "<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>",                  desc = "Code action" },
+	-- { "<Leader>a",  "<cmd>lua vim.lsp.buf.range_code_action()<CR>",           desc = "Range code action" },
+	-- { "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>",                      desc = "Rename symbol" },
+	-- {";wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "" },
+	-- {";wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "" },
+	-- {";wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "" },
 	{ "<Leader>d", "<Cmd>lua vim.lsp.buf.definition()<CR>",                  desc = "Jumps to definition" },
 	{ "<Leader>D", "<Cmd>lua vim.lsp.buf.declaration()<CR>",                 desc = "Jumps to declaration" },
 	{ "<Leader>T", "<cmd>lua vim.lsp.buf.type_definition()<CR>",             desc = "Jumps to type definition" },
 	{ "<Leader>i", "<cmd>lua vim.lsp.buf.implementation()<CR>",              desc = "Lists all symbol implementations" },
 	{ "<Leader>s", "<cmd>lua vim.lsp.buf.signature_help()<CR>",              desc = "Show symbol signature information" },
-	-- { "<Leader>h",  "<Cmd>lua vim.lsp.buf.hover()<CR>",                       desc = "Show symbol hover information" },
-	{ "K",         "<Cmd>lua vim.lsp.buf.hover()<CR>",                       desc = "Show symbol hover information" },
-	-- using 'filipdutescu/renamer.nvim' for rename instead
-	-- { "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>",                      desc = "Rename symbol" },
-	{ "<Leader>R", "<cmd>lua require('renamer').rename()<cr>",               desc = "Rename symbol" },
 	{ "<Leader>f", "<cmd>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>", desc = "Format document" },
-	{ "<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>",                 desc = "Code action" },
-	-- { "<Leader>a",  "<cmd>lua vim.lsp.buf.range_code_action()<CR>",           desc = "Range code action" },
+	{ "K",         "<Cmd>lua vim.lsp.buf.hover()<CR>",                       desc = "Show symbol hover information" },
 	{ "<Leader>r", "<cmd>Telescope lsp_references<CR>",                      desc = "Lsp references" },
-
-	-- {";wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "" },
-	-- {";wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "" },
-	-- {";wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "" },
+	-- using 'filipdutescu/renamer.nvim' for rename
+	{ "<Leader>R", "<cmd>lua require('renamer').rename()<cr>",               desc = "Rename symbol" },
+	-- using 'rachartier/tiny-code-action.nvim' for code action
+	{ "<Leader>a", "<cmd>lua require('tiny-code-action').code_action()<CR>", desc = "Code action" },
 }
 
 plugin["zbirenbaum/copilot.lua"] = {
