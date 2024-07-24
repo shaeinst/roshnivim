@@ -30,6 +30,7 @@ M.plugins = {
 	"LuaSnip",
 	"mason",
 	"mason-lspconfig",
+	"messenger",
 	"navic",
 	"neo-tree",
 	"none-ls",

@@ -12,6 +12,7 @@ Use your nvim tabs as a workspace multiplexer!
 
 local spec = {
 	"nanozuki/tabby.nvim",
+	event = { "TabEnter", "TabLeave", "TabNew", "TabClosed" },
 }
 
 local tab = function()
@@ -107,7 +108,6 @@ spec.config = function()
 	vim.o.showtabline = 1
 
 	require("tabby.tabline").set(view, opt)
-	require("abstract.utils.map").set_map("nanozuki/tabby.nvim")
 end
 
 return spec
