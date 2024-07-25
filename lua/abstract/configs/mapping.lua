@@ -2,17 +2,17 @@ local M = {}
 local plugin = {}
 
 M.builtin = {
-	{ "??",       ":let @/ = ''<CR>", desc = "Clear last used search pattern" },
+	{ "??",         ":let @/ = ''<CR>", desc = "Clear last used search pattern" },
 
-	{ "<M-b>",    ":bnext<CR>",       desc = "Goto next buffer" },
-	{ "<M-S-b>",  ":bprevious<CR>",   desc = "Goto previous buffer" },
-	{ "<M-q>w",   ":close <CR>",      desc = "Close current window" },
+	{ "<M-b>",      ":bnext<CR>",       desc = "Goto next buffer" },
+	{ "<M-S-b>",    ":bprevious<CR>",   desc = "Goto previous buffer" },
+	{ "<M-q><M-w>", ":close <CR>",      desc = "Close current window" },
 
 	-- TAB (:h tab)
 	{ "<M-q>t",   ":tabclose<CR>", desc = "Close current tab" },
 	{ "<M-q>T",   ":tabonly<CR>",  desc = "Close all other tab" },
-	{ "<M-.>",    ":tabn<CR>",     desc = "Go to next tab" },
-	{ "<M-,>",    ":tabp<CR>",     desc = "Go to previous tab" },
+	{ "<M-.>",    ":tabn<CR>",     desc = "Goto next tab" },
+	{ "<M-,>",    ":tabp<CR>",     desc = "Goto previous tab" },
 	{ "<M-S-,>",  ":-tabmove<CR>", desc = "Move tab to next position" },
 	{ "<M-S-.>",  ":+tabmove<CR>", desc = "Move tab to previous position" },
 
@@ -149,7 +149,9 @@ plugin["stevearc/oil.nvim"] = {
 }
 
 plugin["lsig/messenger.nvim"] = {
-	{ ";gs", "<CMD>lua require('messenger').show()<CR>", desc = "Show commit message" },
+	{ "<Leader>v",  group = "Version Control (Git)" },
+	{ "<Leader>vs", "<CMD>lua require('messenger').show()<CR>", desc = "Show commit message" },
+	{ "<Leader>vp", "<CMD>lua require('messenger').show()<CR>", desc = "Show commit message" },
 }
 
 M.plugin = plugin
