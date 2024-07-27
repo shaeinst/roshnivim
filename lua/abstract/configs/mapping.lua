@@ -4,8 +4,8 @@ local plugin = {}
 M.builtin = {
 	{ "??",         ":let @/ = ''<CR>", desc = "Clear last used search pattern" },
 
-	{ "<M-b>",      ":bnext<CR>",       desc = "Goto next buffer" },
-	{ "<M-S-b>",    ":bprevious<CR>",   desc = "Goto previous buffer" },
+	{ "\\",         ":bnext<CR>",       desc = "Goto next buffer" },
+	{ "|",          ":bprevious<CR>",   desc = "Goto previous buffer" },
 	{ "<M-q><M-w>", ":close <CR>",      desc = "Close current window" },
 
 	-- TAB (:h tab)
