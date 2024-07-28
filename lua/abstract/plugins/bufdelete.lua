@@ -14,11 +14,7 @@ allow you to delete a buffer without messing up your window layout.
 
 local spec = {
 	"famiu/bufdelete.nvim",
+	keys = require("abstract.configs.mapping").plugin["famiu/bufdelete.nvim"],
 }
-
-spec.config = function()
-	require("abstract.utils.map").set_map("famiu/bufdelete.nvim")
-end
-
 
 return spec

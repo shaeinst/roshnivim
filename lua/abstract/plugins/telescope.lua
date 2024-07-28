@@ -13,10 +13,6 @@ is centered around modularity, allowing for easy customization.
 
 local spec = {
 	"nvim-telescope/telescope.nvim",
-	-- NOTE: i need to figure it out how to implement lazy load
-	-- lazy = true,
-	-- cmd = { "Telescope" },
-	-- keys = { "t", "<C-f>", "<C-p>" },
 	dependencies = {
 		"nvim-telescope/telescope-file-browser.nvim",
 		"nvim-telescope/telescope-media-files.nvim",
@@ -24,6 +20,8 @@ local spec = {
 		"nvim-telescope/telescope-ui-select.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
+	cmd = { "Telescope" },
+	keys = require("abstract.configs.mapping").plugin["nvim-telescope/telescope.nvim"],
 }
 
 spec.config = function()
@@ -139,8 +137,6 @@ spec.config = function()
 	telescope.load_extension("media_files")
 	telescope.load_extension("ui-select")
 	telescope.load_extension("project")
-
-	require("abstract.utils.map").set_map("nvim-telescope/telescope.nvim")
 end
 
 return spec

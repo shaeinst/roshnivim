@@ -29,7 +29,11 @@ end
 
 local setup_map = function()
 	local add = require("which-key").add
-	for _, map in ipairs(require("abstract.configs.mapping").builtin) do
+	local mappings = require("abstract.configs.mapping")
+	for _, map in ipairs(mappings.builtin) do
+		add(map)
+	end
+	for _, map in ipairs(mappings.override) do
 		add(map)
 	end
 	for _, map in ipairs(require("override.mapping")) do

@@ -14,16 +14,12 @@ anywhere in a document with as few keystrokes as possible
 local spec = {
 	"smoka7/hop.nvim",
 	version = "*",
-	keys = { "f" },
+	keys = require("abstract.configs.mapping").plugin["smoka7/hop.nvim"],
 }
 
-spec.config = function()
-	require("hop").setup({
-		keys = "qwertyuiopasdfghjklzxcvbnm",
-		jump_on_sole_occurrence = false,
-	})
-
-	require("abstract.utils.map").set_map("smoka7/hop.nvim")
-end
+spec.opts = {
+	keys = "qwertyuiopasdfghjklzxcvbnm",
+	jump_on_sole_occurrence = false,
+}
 
 return spec

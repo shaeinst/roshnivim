@@ -11,9 +11,9 @@ A simple wrapper around :mksession.
 
 local spec = {
 	"Shatur/neovim-session-manager",
-	lazy = true,
 	event = "BufWinEnter",
 	cmd = { "SessionManager" },
+	keys = require("abstract.configs.mapping").plugin["Shatur/neovim-session-manager"],
 }
 
 spec.config = function()
@@ -41,8 +41,6 @@ spec.config = function()
 	-- 		require('nvim-tree').toggle(false, true)
 	-- 	end,
 	-- })
-
-	require("abstract.utils.map").set_map("Shatur/neovim-session-manager")
 end
 
 return spec

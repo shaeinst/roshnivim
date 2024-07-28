@@ -112,8 +112,6 @@ spec.setup = function()
 	-- overider the config with user defined one ("~/.config/nvim/lua/override/none-ls.lua")
 	sources = vim.tbl_extend("force", sources, require("override.none-ls").setup(null, installed_packages))
 
-	-- setup mapping
-	require("abstract.utils.map").set_map("nvimtools/none-ls.nvim")
 	-- setup null-ls
 	null.setup({ debug = false, sources = sources })
 end

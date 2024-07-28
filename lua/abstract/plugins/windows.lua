@@ -15,20 +15,18 @@ local spec = {
 	dependencies = {
 		"anuvyklack/middleclass",
 	},
+	keys = require("abstract.configs.mapping").plugin["anuvyklack/windows.nvim"],
 }
 
-spec.config = function()
-	require("windows").setup({
-		autowidth = {
-			enable = false,
-			winwidth = 5,
-		},
-		ignore = {
-			buftype = { "quickfix" },
-			filetype = { "NvimTree", "neo-tree", "undotree", "gundo" },
-		},
-	})
-	require("abstract.utils.map").set_map("anuvyklack/windows.nvim")
-end
+spec.opts = {
+	autowidth = {
+		enable = false,
+		winwidth = 5,
+	},
+	ignore = {
+		buftype = { "quickfix" },
+		filetype = { "NvimTree", "neo-tree", "undotree", "gundo" },
+	},
+}
 
 return spec

@@ -12,7 +12,6 @@ Completion sources are installed from external repositories and "sourced".
 
 local spec = {
 	"hrsh7th/nvim-cmp",
-	event = "InsertEnter",
 	dependencies = {
 		{ "hrsh7th/cmp-buffer",                 lazy = true },      -- nvim-cmp source for buffer words.
 		{ "hrsh7th/cmp-cmdline",                lazy = true },      -- nvim-cmp source for vim's cmdline.
@@ -24,6 +23,8 @@ local spec = {
 		{ "saadparwaiz1/cmp_luasnip",           lazy = true },      -- luasnip completion source for nvim-cmp
 		{ 'lukas-reineke/cmp-under-comparator', lazy = true },      -- nvim-cmp comparator function for completion items that start with one or more underlines
 	},
+	event = { "InsertEnter" },
+	keys = {":"}
 }
 
 spec.config = function()
