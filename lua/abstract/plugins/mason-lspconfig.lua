@@ -41,6 +41,10 @@ local mason_lspconfig = function(hook)
 				},
 			},
 		},
+		["mojo"] = {
+			executable = "mojo",
+			config = {},
+		},
 	}
 
 	-- and this one is for installed lsp
