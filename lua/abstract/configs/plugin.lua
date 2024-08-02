@@ -1,6 +1,7 @@
 local M = {}
 
 M.deps = {
+	"nui",
 	"plenary",
 	"web-devicons",
 }
@@ -22,7 +23,9 @@ M.plugins = {
 	"gitsigns",
 	"goto-preview",
 	"grapple",
+	"helpview",
 	"hop",
+	"hovercraft",
 	"indent-blankline",
 	"lazydev",
 	"lsp_signature",
@@ -33,6 +36,7 @@ M.plugins = {
 	"messenger",
 	"navic",
 	"neo-tree",
+	"noice",
 	"none-ls",
 	"nvim-bqf",
 	"nvim-java",
@@ -40,7 +44,7 @@ M.plugins = {
 	"penvim",
 	"renamer",
 	"rustaceanvim",
-	"helpview",
+	"satellite",
 	"SchemaStore",
 	"session-manager",
 	"surround",

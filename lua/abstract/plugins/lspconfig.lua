@@ -37,10 +37,12 @@ local lsp_config = function()
 		-- 	-- severity_limit='Error'  -- Only show virtual text on error
 		-- },
 	})
-	handlers["textDocument/hover"] = vim.lsp.with(handlers.hover, { border = "rounded" })
-	handlers["textDocument/signatureHelp"] = vim.lsp.with(handlers.signature_help, { border = "single" })
+	-- hover and signature help is handled by nvim patrickpichler/hovercraft.nvim
+	-- handlers["textDocument/hover"] = vim.lsp.with(handlers.hover, { border = "rounded" })
+	-- handlers["textDocument/signatureHelp"] = vim.lsp.with(handlers.signature_help, { border = "single" })
 	-- show diagnostic on float window(like auto complete)
 	-- vim.api.nvim_command [[ autocmd CursorHold  *.lua,*.sh,*.bash,*.dart,*.py,*.cpp,*.c,js lua vim.lsp.diagnostic.show_line_diagnostics() ]]
+
 	-- set LSP diagnostic symbols/signs ●
 	vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
 	vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })

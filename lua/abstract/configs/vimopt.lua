@@ -81,7 +81,8 @@ vim.opt.cmdheight = 1                                      -- command height
 vim.opt.hidden = true                                      -- allows you to hide buffers with unsaved changes without being prompted
 vim.opt.inccommand = "split"                               -- live preview of :s results
 vim.opt.shell = "zsh"                                      -- shell to use for `!`, `:!`, `system()` etc.
-vim.opt.lazyredraw = true                                  -- faster scrolling
+-- disable it for batter support folke/noice.nvim
+-- vim.opt.lazyredraw = true                                  -- faster scrolling
 
 vim.opt.wildignore = vim.opt.wildignore + "*.o,*.rej,*.so" -- patterns to ignore during file-navigation
 vim.opt.completeopt = "menuone,noselect,noinsert"          -- completion options

@@ -46,22 +46,23 @@ M.plugin = {
 	},
 
 	["neovim/nvim-lspconfig"] = {
-		-- { "<Leader>n",  "<CMD>lua vim.diagnostic.goto_next()<CR>",                desc = "Move to next diagnostic" },
-		-- { "<Leader>b",  "<CMD>lua vim.diagnostic.goto_prev()<CR>",                desc = "Move to previous diagnostic" },
-		-- { "<Leader>a", "<CMD>lua vim.lsp.buf.code_action()<CR>",                  desc = "Code action" },
-		-- { "<Leader>a",  "<CMD>lua vim.lsp.buf.range_code_action()<CR>",           desc = "Range code action" },
-		-- { "<Leader>rn", "<CMD>lua vim.lsp.buf.rename()<CR>",                      desc = "Rename symbol" },
+		-- { "<Leader>f",  "<CMD>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>", desc = "Format document" },
+		-- using 'patrickpichler/hovercraft.nvim' for hover
+		-- { "K",          "<CMD>lua vim.lsp.buf.hover()<CR>",             desc = "Show symbol hover information", },
+		-- { "<Leader>n",  "<CMD>lua vim.diagnostic.goto_next()<CR>",      desc = "Move to next diagnostic" },
+		-- { "<Leader>b",  "<CMD>lua vim.diagnostic.goto_prev()<CR>",      desc = "Move to previous diagnostic" },
+		-- { "<Leader>a",  "<CMD>lua vim.lsp.buf.code_action()<CR>",       desc = "Code action" },
+		-- { "<Leader>a",  "<CMD>lua vim.lsp.buf.range_code_action()<CR>", desc = "Range code action" },
+		-- { "<Leader>rn", "<CMD>lua vim.lsp.buf.rename()<CR>",            desc = "Rename symbol" },
 		-- {";wa", "<CMD>lua vim.lsp.buf.add_workspace_folder()<CR>", "" },
 		-- {";wr", "<CMD>lua vim.lsp.buf.remove_workspace_folder()<CR>", "" },
 		-- {";wl", "<CMD>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "" },
-		-- { "<Leader>f", "<CMD>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>", desc = "Format document" },
 		{ "<Leader>e", "<CMD>lua vim.diagnostic.open_float()<CR>",               desc = "Show diagnostics" },
 		{ "<Leader>d", "<CMD>lua vim.lsp.buf.definition()<CR>",                  desc = "Jumps to definition" },
 		{ "<Leader>D", "<CMD>lua vim.lsp.buf.declaration()<CR>",                 desc = "Jumps to declaration" },
 		{ "<Leader>T", "<CMD>lua vim.lsp.buf.type_definition()<CR>",             desc = "Jumps to type definition" },
 		{ "<Leader>i", "<CMD>lua vim.lsp.buf.implementation()<CR>",              desc = "Lists all symbol implementations", },
 		{ "<Leader>s", "<CMD>lua vim.lsp.buf.signature_help()<CR>",              desc = "Show symbol signature information", },
-		{ "K",         "<CMD>lua vim.lsp.buf.hover()<CR>",                       desc = "Show symbol hover information", },
 		{ "<Leader>r", "<CMD>Telescope lsp_references<CR>",                      desc = "Lsp references" },
 		-- using 'filipdutescu/renamer.nvim' for rename
 		{ "<Leader>R", "<CMD>lua require('renamer').rename()<CR>",               desc = "Rename symbol" },
@@ -77,6 +78,18 @@ M.plugin = {
 		{ "<M-k>", "<CMD>lua require('copilot.suggestion').prev()<CR>",    desc = "Previous suggestion (Copilot)" },
 	},
 
+	["patrickpichler/hovercraft.nvim"] = {
+		{ "K", function()
+				local hovercraft = require("hovercraft")
+				if hovercraft.is_visible() then
+					hovercraft.enter_popup()
+				else
+					hovercraft.hover()
+				end
+			end,
+			desc = "Hover"
+		},
+	},
 
 	["ThePrimeagen/harpoon"] = {
 		{
