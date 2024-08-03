@@ -31,18 +31,21 @@ M.override = {
 M.plugin = {
 
 	["nvim-telescope/telescope.nvim"] = {
-		{ "tt",    "<CMD>lua require('telescope.builtin').builtin() <CR>",                    desc = "Telescope builtin" },
-		{ "tc",    "<CMD>lua require('telescope.builtin').commands() <CR>",                   desc = "Commands" },
-		{ "th",    "<CMD>lua require('telescope.builtin').help_tags() <CR>",                  desc = "Help tags" },
-		{ "tm",    "<CMD>lua require('telescope.builtin').keymaps() <CR>",                    desc = "Mappings" },
-		{ "tg",    "<CMD>lua require('telescope.builtin').live_grep() <CR>",                  desc = "Find Word (project wise)", },
-		{ "tw",    "<CMD>lua require('telescope.builtin').current_buffer_fuzzy_find() <CR>",  desc = "Find Word (current file)", },
-		{ "tp",    "<CMD>lua require('telescope').extensions.project.project{}<CR>",          desc = "Projects picker" },
+		{ "tt",    "<CMD>lua require('telescope.builtin').builtin()<CR>",                    desc = "Telescope builtin" },
+		{ "tc",    "<CMD>lua require('telescope.builtin').commands()<CR>",                   desc = "Commands" },
+		{ "th",    "<CMD>lua require('telescope.builtin').help_tags()<CR>",                  desc = "Help tags" },
+		{ "tm",    "<CMD>lua require('telescope.builtin').keymaps()<CR>",                    desc = "Mappings" },
+		{ "tw",    "<CMD>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>",  desc = "Find word (current file)" },
+		-- Grep word. (using telescope-live-grep-args.nvim)
+		-- { "tg",    "<CMD>lua require('telescope.builtin').live_grep() <CR>",                  desc = "Find Word (project wise)" },
+		{ "tg",    "<CMD>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",        desc = "Find word (project wise)" },
+		{ "tG",    "<CMD>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<CR>", desc = "Find word under cursor (project wise)" },
 		-- Find files from current file's project
-		{ "<C-p>", "<CMD>Telescope find_files<CR>",                                           desc = "Find File (project dir)", },
+		{ "tp",    "<CMD>lua require('telescope').extensions.project.project{}<CR>",         desc = "Projects picker" },
+		{ "<C-p>", "<CMD>Telescope find_files<CR>",                                          desc = "Find File (project dir)", },
 		-- Show all files from current working directory
-		{ "<C-b>", "<CMD>lua require('telescope.builtin').buffers() <CR>",                    desc = "Opened buffers", },
-		{ "<C-f>", "<CMD>lua require('telescope.builtin').find_files( { cwd = vim.fn.expand('%:p:h') }) <CR>", desc = "Find File (current dir)", },
+		{ "<C-b>", "<CMD>lua require('telescope.builtin').buffers()<CR>",                    desc = "Opened buffers", },
+		{ "<C-f>", "<CMD>lua require('telescope.builtin').find_files( { cwd = vim.fn.expand('%:p:h') })<CR>", desc = "Find File (current dir)", },
 	},
 
 	["neovim/nvim-lspconfig"] = {

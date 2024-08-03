@@ -18,6 +18,7 @@ local spec = {
 		"nvim-telescope/telescope-media-files.nvim",
 		"nvim-telescope/telescope-project.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
+		"nvim-telescope/telescope-live-grep-args.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	cmd = { "Telescope" },
@@ -127,6 +128,7 @@ spec.config = function()
 			project = require("abstract.plugins.extension.telescope-project").config,
 			fzf = require("abstract.plugins.extension.telescope-fzf-native").config,
 			media_files = require("abstract.plugins.extension.telescope-media-files").config,
+			live_grep_args = require("abstract.plugins.extension.telescope-live-grep-args").config,
 		},
 	})
 
@@ -137,6 +139,7 @@ spec.config = function()
 	telescope.load_extension("media_files")
 	telescope.load_extension("ui-select")
 	telescope.load_extension("project")
+	telescope.load_extension("live_grep_args")
 end
 
 return spec
