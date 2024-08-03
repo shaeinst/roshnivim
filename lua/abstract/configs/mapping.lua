@@ -2,7 +2,7 @@ local M = {}
 
 -- Mappings that don't depend on any plugin
 M.builtin = {
-	{ "??",         ":let @/ = ''<CR>", desc = "Clear last used search pattern" },
+	-- { "??",         ":let @/ = ''<CR>", desc = "Clear last used search pattern" },
 
 	{ "\\",         ":bnext<CR>",       desc = "Goto next buffer" },
 	{ "|",          ":bprevious<CR>",   desc = "Goto previous buffer" },
