@@ -171,6 +171,17 @@ M.plugin = {
 		{ "<Leader>vp", "<CMD>lua require('messenger').show()<CR>", desc = "Show commit message" },
 	},
 
+	["isakbm/gitgraph.nvim"] = {
+		{ "<Leader>v",  group = "Version Control (Git)" },
+		{
+			"<Leader>vg",
+			function()
+				require("gitgraph").draw({}, { all = true, max_count = 5000 })
+			end,
+			desc = "New git graph",
+		},
+	},
+
 	["famiu/bufdelete.nvim"] = {
 		{ "<M-q><M-q>", "<CMD>lua require('bufdelete').bufwipeout(0)<CR>", desc = "Close current buffer without killing windows", },
 	},
