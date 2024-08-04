@@ -71,6 +71,10 @@ M.plugin = {
 		{ "<Leader>R", "<CMD>lua require('renamer').rename()<CR>",               desc = "Rename symbol" },
 		-- using 'rachartier/tiny-code-action.nvim' for code action
 		{ "<Leader>a", "<CMD>lua require('tiny-code-action').code_action()<CR>", desc = "Code action" },
+		{
+			{ "<Leader>l", group = "LSP" },
+			{ "<Leader>lh", function () vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, desc = "Inlay hints (toggle)" },
+		}
 	},
 
 	["zbirenbaum/copilot.lua"] = {
