@@ -20,6 +20,7 @@ M.plugins = {
 	"dart-vim-plugin",
 	"fidget",
 	"flutter-tools",
+	"gitgraph",
 	"gitsigns",
 	"goto-preview",
 	"grapple",
@@ -33,7 +34,6 @@ M.plugins = {
 	"LuaSnip",
 	"mason",
 	"mason-lspconfig",
-	"gitgraph",
 	"messenger",
 	"navic",
 	"neo-tree",
@@ -58,6 +58,7 @@ M.plugins = {
 	"ts-autotag",
 	"ts-context-commentstring",
 	"typescript-tools",
+	"vim-dadbod-ui",
 	"which-key",
 	"windows",
 }

@@ -52,28 +52,29 @@ M.plugin = {
 		-- { "<Leader>f",  "<CMD>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>", desc = "Format document" },
 		-- using 'patrickpichler/hovercraft.nvim' for hover
 		-- { "K",          "<CMD>lua vim.lsp.buf.hover()<CR>",             desc = "Show symbol hover information", },
-		-- { "<Leader>n",  "<CMD>lua vim.diagnostic.goto_next()<CR>",      desc = "Move to next diagnostic" },
-		-- { "<Leader>b",  "<CMD>lua vim.diagnostic.goto_prev()<CR>",      desc = "Move to previous diagnostic" },
-		-- { "<Leader>a",  "<CMD>lua vim.lsp.buf.code_action()<CR>",       desc = "Code action" },
-		-- { "<Leader>a",  "<CMD>lua vim.lsp.buf.range_code_action()<CR>", desc = "Range code action" },
 		-- { "<Leader>rn", "<CMD>lua vim.lsp.buf.rename()<CR>",            desc = "Rename symbol" },
-		-- {";wa", "<CMD>lua vim.lsp.buf.add_workspace_folder()<CR>", "" },
-		-- {";wr", "<CMD>lua vim.lsp.buf.remove_workspace_folder()<CR>", "" },
-		-- {";wl", "<CMD>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "" },
 		{ "<Leader>e", "<CMD>lua vim.diagnostic.open_float()<CR>",               desc = "Show diagnostics" },
 		{ "<Leader>d", "<CMD>lua vim.lsp.buf.definition()<CR>",                  desc = "Jumps to definition" },
-		{ "<Leader>D", "<CMD>lua vim.lsp.buf.declaration()<CR>",                 desc = "Jumps to declaration" },
-		{ "<Leader>T", "<CMD>lua vim.lsp.buf.type_definition()<CR>",             desc = "Jumps to type definition" },
-		{ "<Leader>i", "<CMD>lua vim.lsp.buf.implementation()<CR>",              desc = "Lists all symbol implementations", },
-		{ "<Leader>s", "<CMD>lua vim.lsp.buf.signature_help()<CR>",              desc = "Show symbol signature information", },
-		{ "<Leader>r", "<CMD>Telescope lsp_references<CR>",                      desc = "Lsp references" },
 		-- using 'filipdutescu/renamer.nvim' for rename
 		{ "<Leader>R", "<CMD>lua require('renamer').rename()<CR>",               desc = "Rename symbol" },
 		-- using 'rachartier/tiny-code-action.nvim' for code action
 		{ "<Leader>a", "<CMD>lua require('tiny-code-action').code_action()<CR>", desc = "Code action" },
 		{
 			{ "<Leader>l", group = "LSP" },
-			{ "<Leader>lh", function () vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, desc = "Inlay hints (toggle)" },
+
+			{ "<Leader>lf",  "<CMD>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>",  desc = "Format document" },
+			{ "<Leader>lA",  "<CMD>lua vim.lsp.buf.range_code_action()<CR>",            desc = "Range code action" },
+			{ "<Leader>ld",  "<CMD>lua vim.lsp.buf.declaration()<CR>",                  desc = "Jumps to declaration" },
+			{ "<Leader>li",  "<CMD>lua vim.lsp.buf.implementation()<CR>",               desc = "Lists all symbol implementations", },
+			{ "<Leader>ls",  "<CMD>lua vim.lsp.buf.signature_help()<CR>",               desc = "Show symbol signature information", },
+			{ "<Leader>lt",  "<CMD>lua vim.lsp.buf.type_definition()<CR>",              desc = "Jumps to type definition" },
+			{ "<Leader>lwa", "<CMD>lua vim.lsp.buf.add_workspace_folder()<CR>",         desc = "Add workspace folder" },
+			{ "<Leader>lwr", "<CMD>lua vim.lsp.buf.remove_workspace_folder()<CR>",      desc = "Remove workspace folders" },
+			{ "<Leader>lh",  function () vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, desc = "Inlay hints (toggle)" },
+			{ "<Leader>lwl", "<CMD>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", desc = "List workspace folders" },
+			{ "<Leader>lb",  "<CMD>lua vim.diagnostic.goto_prev()<CR>",                 desc = "Move to previous diagnostic" },
+			{ "<Leader>ln",  "<CMD>lua vim.diagnostic.goto_next()<CR>",                 desc = "Move to next diagnostic" },
+			{ "<Leader>lr",  "<CMD>Telescope lsp_references<CR>",                       desc = "Lsp references" },
 		}
 	},
 
@@ -193,8 +194,6 @@ M.plugin = {
 	["chrisgrieser/nvim-rip-substitute"] = {
 		{ "<Leader>:", "<CMD>lua require('rip-substitute').sub()<CR>", desc = "rip substitute", },
 	},
-
-
 }
 
 return M
