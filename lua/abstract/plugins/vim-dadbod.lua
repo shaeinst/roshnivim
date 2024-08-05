@@ -1,23 +1,27 @@
 --[[
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ────────────────────────────────────────────────
-Plugin: vim-dadbod-ui
-Github: https://github.com/kristijanhusak/vim-dadbod-ui
+Plugin: vim-dadbod
+Github: https://github.com/tpope/vim-dadbod
 
-Simple UI for vim-dadbod.
-It allows simple navigation through databases and allows saving queries for later use.
+
+Dadbod is a Vim plugin for interacting with databases
 ────────────────────────────────────────────────
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 --]]
 
 local spec = {
-	"kristijanhusak/vim-dadbod-ui",
-	lazy= true,
-	cmd = { "DBUI", "DBUIToggle", "DBUIAddConnection", "DBUIFindBuffer" },
+	"tpope/vim-dadbod",
 	dependencies = {
-		{ "tpope/vim-dadbod", lazy = true },
-		{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true }, -- Optional
+		{ "kristijanhusak/vim-dadbod-ui", lazy = true }, -- Simple UI for vim-dadbod.
+		{
+			"kristijanhusak/vim-dadbod-completion",
+			ft = { "sql", "mysql", "plsql" },
+			lazy = true,
+		},
 	},
+	lazy = true,
+	cmd = { "DBUI", "DBUIToggle", "DBUIAddConnection", "DBUIFindBuffer" },
 }
 
 spec.init = function()

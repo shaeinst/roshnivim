@@ -58,7 +58,7 @@ M.plugins = {
 	"ts-autotag",
 	"ts-context-commentstring",
 	"typescript-tools",
-	"vim-dadbod-ui",
+	"vim-dadbod",
 	"which-key",
 	"windows",
 }
