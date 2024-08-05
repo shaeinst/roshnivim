@@ -23,9 +23,6 @@ local spec = {
 spec.init = function()
 	-- Your DBUI configuration
 	vim.g.db_ui_use_nerd_fonts = 1
-	vim.g.dbs = {
-		{ name = "POSTGRES_TEST", url = "postgresql://mali:password15#123@192.168.70.144:5432/POSTGRES_TEST" },
-	}
 end
 
 return spec
