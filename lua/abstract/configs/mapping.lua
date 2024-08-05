@@ -4,22 +4,22 @@ local M = {}
 M.builtin = {
 	-- { "??",         ":let @/ = ''<CR>", desc = "Clear last used search pattern" },
 
-	{ "\\",         ":bnext<CR>",       desc = "Goto next buffer" },
-	{ "|",          ":bprevious<CR>",   desc = "Goto previous buffer" },
-	{ "<M-q><M-w>", ":close <CR>",      desc = "Close current window" },
+	{ "\\",         ":bnext<CR>",     desc = "Goto next buffer" },
+	{ "|",          ":bprevious<CR>", desc = "Goto previous buffer" },
+	{ "<M-q><M-w>", ":close <CR>",    desc = "Close current window" },
 
 	-- TAB (:h tab)
-	{ "<M-q>t",     ":tabclose<CR>",    desc = "Close current tab" },
-	{ "<M-q>T",     ":tabonly<CR>",     desc = "Close all other tab" },
-	{ "<M-.>",      ":tabn<CR>",        desc = "Goto next tab" },
-	{ "<M-,>",      ":tabp<CR>",        desc = "Goto previous tab" },
-	{ "<M-S-,>",    ":-tabmove<CR>",    desc = "Move tab to next position" },
-	{ "<M-S-.>",    ":+tabmove<CR>",    desc = "Move tab to previous position" },
+	{ "<M-q>t",     ":tabclose<CR>",  desc = "Close current tab" },
+	{ "<M-q>T",     ":tabonly<CR>",   desc = "Close all other tab" },
+	{ "<M-.>",      ":tabn<CR>",      desc = "Goto next tab" },
+	{ "<M-,>",      ":tabp<CR>",      desc = "Goto previous tab" },
+	{ "<M-S-,>",    ":-tabmove<CR>",  desc = "Move tab to next position" },
+	{ "<M-S-.>",    ":+tabmove<CR>",  desc = "Move tab to previous position" },
 
-	{ "<M-h>",      "<C-w>h",           desc = "Move cursor to left window" },
-	{ "<M-l>",      "<C-w>l",           desc = "Move cursor to right window" },
-	{ "<M-k>",      "<C-w>k",           desc = "Move cursor to above window" },
-	{ "<M-j>",      "<C-w>j",           desc = "Move cursor to below window" },
+	{ "<M-h>",      "<C-w>h",         desc = "Move cursor to left window" },
+	{ "<M-l>",      "<C-w>l",         desc = "Move cursor to right window" },
+	{ "<M-k>",      "<C-w>k",         desc = "Move cursor to above window" },
+	{ "<M-j>",      "<C-w>j",         desc = "Move cursor to below window" },
 }
 
 -- Mappings that depends on plugin but reqires to override builtin mappings
@@ -31,20 +31,20 @@ M.override = {
 M.plugin = {
 
 	["nvim-telescope/telescope.nvim"] = {
-		{ "tt",    "<CMD>lua require('telescope.builtin').builtin()<CR>",                    desc = "Telescope builtin" },
-		{ "tc",    "<CMD>lua require('telescope.builtin').commands()<CR>",                   desc = "Commands" },
-		{ "th",    "<CMD>lua require('telescope.builtin').help_tags()<CR>",                  desc = "Help tags" },
-		{ "tm",    "<CMD>lua require('telescope.builtin').keymaps()<CR>",                    desc = "Mappings" },
-		{ "tw",    "<CMD>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>",  desc = "Find word (current file)" },
+		{ "tt",    "<CMD>lua require('telescope.builtin').builtin()<CR>",                                     desc = "Telescope builtin" },
+		{ "tc",    "<CMD>lua require('telescope.builtin').commands()<CR>",                                    desc = "Commands" },
+		{ "th",    "<CMD>lua require('telescope.builtin').help_tags()<CR>",                                   desc = "Help tags" },
+		{ "tm",    "<CMD>lua require('telescope.builtin').keymaps()<CR>",                                     desc = "Mappings" },
+		{ "tw",    "<CMD>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>",                   desc = "Find word (current file)" },
 		-- Grep word. (using telescope-live-grep-args.nvim)
 		-- { "tg",    "<CMD>lua require('telescope.builtin').live_grep() <CR>",                  desc = "Find Word (project wise)" },
-		{ "tg",    "<CMD>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",        desc = "Find word (project wise)" },
-		{ "tG",    "<CMD>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<CR>", desc = "Find word under cursor (project wise)" },
+		{ "tg",    "<CMD>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",            desc = "Find word (project wise)" },
+		{ "tG",    "<CMD>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<CR>",     desc = "Find word under cursor (project wise)" },
 		-- Find files from current file's project
-		{ "tp",    "<CMD>lua require('telescope').extensions.project.project{}<CR>",         desc = "Projects picker" },
-		{ "<C-p>", "<CMD>Telescope find_files<CR>",                                          desc = "Find File (project dir)", },
+		{ "tp",    "<CMD>lua require('telescope').extensions.project.project{}<CR>",                          desc = "Projects picker" },
+		{ "<C-p>", "<CMD>Telescope find_files<CR>",                                                           desc = "Find File (project dir)", },
 		-- Show all files from current working directory
-		{ "<C-b>", "<CMD>lua require('telescope.builtin').buffers()<CR>",                    desc = "Opened buffers", },
+		{ "<C-b>", "<CMD>lua require('telescope.builtin').buffers()<CR>",                                     desc = "Opened buffers", },
 		{ "<C-f>", "<CMD>lua require('telescope.builtin').find_files( { cwd = vim.fn.expand('%:p:h') })<CR>", desc = "Find File (current dir)", },
 	},
 
@@ -60,21 +60,23 @@ M.plugin = {
 		-- using 'rachartier/tiny-code-action.nvim' for code action
 		{ "<Leader>a", "<CMD>lua require('tiny-code-action').code_action()<CR>", desc = "Code action" },
 		{
-			{ "<Leader>l", group = "LSP" },
-
-			{ "<Leader>lf",  "<CMD>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>",  desc = "Format document" },
-			{ "<Leader>lA",  "<CMD>lua vim.lsp.buf.range_code_action()<CR>",            desc = "Range code action" },
-			{ "<Leader>ld",  "<CMD>lua vim.lsp.buf.declaration()<CR>",                  desc = "Jumps to declaration" },
-			{ "<Leader>li",  "<CMD>lua vim.lsp.buf.implementation()<CR>",               desc = "Lists all symbol implementations", },
-			{ "<Leader>ls",  "<CMD>lua vim.lsp.buf.signature_help()<CR>",               desc = "Show symbol signature information", },
-			{ "<Leader>lt",  "<CMD>lua vim.lsp.buf.type_definition()<CR>",              desc = "Jumps to type definition" },
-			{ "<Leader>lwa", "<CMD>lua vim.lsp.buf.add_workspace_folder()<CR>",         desc = "Add workspace folder" },
-			{ "<Leader>lwr", "<CMD>lua vim.lsp.buf.remove_workspace_folder()<CR>",      desc = "Remove workspace folders" },
-			{ "<Leader>lh",  function () vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, desc = "Inlay hints (toggle)" },
-			{ "<Leader>lwl", "<CMD>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", desc = "List workspace folders" },
-			{ "<Leader>lb",  "<CMD>lua vim.diagnostic.goto_prev()<CR>",                 desc = "Move to previous diagnostic" },
-			{ "<Leader>ln",  "<CMD>lua vim.diagnostic.goto_next()<CR>",                 desc = "Move to next diagnostic" },
-			{ "<Leader>lr",  "<CMD>Telescope lsp_references<CR>",                       desc = "Lsp references" },
+			{ "<Leader>l",   group = "LSP" },
+			{ "<Leader>lf",  "<CMD>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>",                      desc = "Format document" },
+			{ "<Leader>lA",  "<CMD>lua vim.lsp.buf.range_code_action()<CR>",                                desc = "Range code action" },
+			{ "<Leader>ld",  "<CMD>lua vim.lsp.buf.declaration()<CR>",                                      desc = "Jumps to declaration" },
+			{ "<Leader>li",  "<CMD>lua vim.lsp.buf.implementation()<CR>",                                   desc = "Lists all symbol implementations", },
+			{ "<Leader>ls",  "<CMD>lua vim.lsp.buf.signature_help()<CR>",                                   desc = "Show symbol signature information", },
+			{ "<Leader>lt",  "<CMD>lua vim.lsp.buf.type_definition()<CR>",                                  desc = "Jumps to type definition" },
+			{ "<Leader>lh",  function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, desc = "Inlay hints (toggle)" },
+			{ "<Leader>lb",  "<CMD>lua vim.diagnostic.goto_prev()<CR>",                                     desc = "Move to previous diagnostic" },
+			{ "<Leader>ln",  "<CMD>lua vim.diagnostic.goto_next()<CR>",                                     desc = "Move to next diagnostic" },
+			{ "<Leader>lr",  "<CMD>Telescope lsp_references<CR>",                                           desc = "Lsp references" },
+			{
+				{ "<Leader>lw",   group = "Workspace" },
+				{ "<Leader>lwa", "<CMD>lua vim.lsp.buf.add_workspace_folder()<CR>",                         desc = "Add workspace folder" },
+				{ "<Leader>lwr", "<CMD>lua vim.lsp.buf.remove_workspace_folder()<CR>",                      desc = "Remove workspace folders" },
+				{ "<Leader>lwl", "<CMD>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",   desc = "List workspace folders" },
+			}
 		}
 	},
 
@@ -87,7 +89,9 @@ M.plugin = {
 	},
 
 	["patrickpichler/hovercraft.nvim"] = {
-		{ "K", function()
+		{
+			"K",
+			function()
 				local hovercraft = require("hovercraft")
 				if hovercraft.is_visible() then
 					hovercraft.enter_popup()
@@ -177,7 +181,7 @@ M.plugin = {
 	},
 
 	["isakbm/gitgraph.nvim"] = {
-		{ "<Leader>v",  group = "Version Control (Git)" },
+		{ "<Leader>v", group = "Version Control (Git)" },
 		{
 			"<Leader>vg",
 			function()
