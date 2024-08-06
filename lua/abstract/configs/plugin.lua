@@ -33,6 +33,7 @@ M.plugins = {
 	"lspconfig",
 	"LuaSnip",
 	"markdown-preview",
+	"markview",
 	"mason",
 	"mason-lspconfig",
 	"messenger",
