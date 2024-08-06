@@ -8,6 +8,7 @@ M.deps = {
 
 M.plugins = {
 	"abstract-autocmds",
+	"markdown-preview",
 	"abstract-cursor",
 	"alpha-nvim",
 	"autopairs",
