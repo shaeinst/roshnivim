@@ -8,7 +8,6 @@ M.deps = {
 
 M.plugins = {
 	"abstract-autocmds",
-	"markdown-preview",
 	"abstract-cursor",
 	"alpha-nvim",
 	"autopairs",
@@ -33,6 +32,7 @@ M.plugins = {
 	"lsp_signature",
 	"lspconfig",
 	"LuaSnip",
+	"markdown-preview",
 	"mason",
 	"mason-lspconfig",
 	"messenger",
