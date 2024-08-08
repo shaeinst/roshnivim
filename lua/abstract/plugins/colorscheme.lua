@@ -16,9 +16,7 @@ local spec = {
 }
 
 spec.config = function()
-	pcall(vim.cmd, "colorscheme abscs")
-	-- theme name
-	vim.g.abscs_theme_name = "aqua"
+	require("abstract_cs").setup({})
 end
 
 return spec
