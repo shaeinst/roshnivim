@@ -27,10 +27,10 @@ spec.config = function()
 			vertical_end = " └",
 		},
 		hi = {
-			error = "DiagnosticSignError",
-			warn = "DiagnosticSignWarn",
-			info = "DiagnosticSignInfo",
-			hint = "DiagnosticSignHint",
+			error = "DiagnosticError",
+			warn = "DiagnosticWarn",
+			info = "DiagnosticInfo",
+			hint = "DiagnosticHint",
 			arrow = "NonText",
 			background = "CursorLine", -- Can be a highlight or a hexadecimal color (#RRGGBB)
 			mixing_color = "None", -- Can be None or a hexadecimal color (#RRGGBB). Used to blend the background color with the diagnostic background color with another color.

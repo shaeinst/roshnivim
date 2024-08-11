@@ -11,7 +11,7 @@ Live grep with args
 
 local M = {}
 
-local lga_actions = require("telescope-live-grep-args.actions")
+-- local lga_actions = require("telescope-live-grep-args.actions")
 
 M.config = {
 	-- auto_quoting = true, -- enable/disable auto-quoting
