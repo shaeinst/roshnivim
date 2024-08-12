@@ -45,7 +45,7 @@ spec.opts = {
 			-- - SatelliteDiagnosticHint (default links to DiagnosticHint)
 		},
 		gitsigns = {
-			enable = true,
+			enable = false,
 			signs = { -- can only be a single character (multibyte is okay)
 				add = "│",
 				change = "│",
