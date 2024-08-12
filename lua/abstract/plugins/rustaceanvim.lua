@@ -12,7 +12,7 @@ A heavily modified fork of rust-tools.nvim
 
 local spec = {
 	"mrcjkb/rustaceanvim",
-	version = "^4", -- Recommended
+	version = "^5", -- Recommended
 	ft = { "rust" },
 }
 
