@@ -219,7 +219,12 @@ M.plugin = {
 		{ "<Leader>pl", "<CMD>lua require('kulala').jump_next()<CR>",   desc = "jump to the next request" },
 		{ "<Leader>pt", "<CMD>lua require('kulala').toggle_view()<CR>", desc = "Response view (Toggle )" },
 
-	}
+	},
+	["rest-nvim/rest.nvim"] = {
+		{ "<Leader>p",  group = "HTTP" },
+		{ "<Leader>pp", "<CMD>Rest run<CR>",      desc = "Run request under cursor" },
+		{ "<Leader>pl", "<CMD>Rest run last<CR>", desc = "Re-run latest request" },
+	},
 }
 
 return M
