@@ -56,6 +56,7 @@ M.plugins = {
 	"telescope",
 	"tiny-code-action",
 	"tiny-inline-diagnostic",
+	"toggleterm",
 	"treesitter",
 	"trouble",
 	"ts-autotag",

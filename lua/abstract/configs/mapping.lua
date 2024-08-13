@@ -207,7 +207,10 @@ M.plugin = {
 		{ '<leader>rq', ':RunClose<CR>',    desc = "Close runner (Run Code)" },
 		{ '<leader>ro', ':CRFiletype<CR>',  desc = "Open json with supported files (Run Code)" },
 		{ '<leader>rO', ':CRProjects<CR>',  desc = "Open json with list of projects (Run Code)" },
-	}
+	},
+	["akinsho/toggleterm.nvim"] = {
+		{ "<Leader>T", group = "Terminal" },
+	},
 }
 
 return M
