@@ -13,6 +13,7 @@ M.plugins = {
 	"autopairs",
 	"bufdelete",
 	"cmp",
+	"code_runner",
 	"colorizer",
 	"colorscheme",
 	"Comment",

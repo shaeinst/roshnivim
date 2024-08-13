@@ -60,22 +60,22 @@ M.plugin = {
 		-- using 'rachartier/tiny-code-action.nvim' for code action
 		{ "<Leader>a", "<CMD>lua require('tiny-code-action').code_action()<CR>", desc = "Code action" },
 		{
-			{ "<Leader>l",   group = "LSP" },
-			{ "<Leader>lf",  "<CMD>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>",                      desc = "Format document" },
-			{ "<Leader>lA",  "<CMD>lua vim.lsp.buf.range_code_action()<CR>",                                desc = "Range code action" },
-			{ "<Leader>ld",  "<CMD>lua vim.lsp.buf.declaration()<CR>",                                      desc = "Jumps to declaration" },
-			{ "<Leader>li",  "<CMD>lua vim.lsp.buf.implementation()<CR>",                                   desc = "Lists all symbol implementations", },
-			{ "<Leader>ls",  "<CMD>lua vim.lsp.buf.signature_help()<CR>",                                   desc = "Show symbol signature information", },
-			{ "<Leader>lt",  "<CMD>lua vim.lsp.buf.type_definition()<CR>",                                  desc = "Jumps to type definition" },
-			{ "<Leader>lh",  function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, desc = "Inlay hints (toggle)" },
-			{ "<Leader>lb",  "<CMD>lua vim.diagnostic.goto_prev()<CR>",                                     desc = "Move to previous diagnostic" },
-			{ "<Leader>ln",  "<CMD>lua vim.diagnostic.goto_next()<CR>",                                     desc = "Move to next diagnostic" },
-			{ "<Leader>lr",  "<CMD>Telescope lsp_references<CR>",                                           desc = "Lsp references" },
+			{ "<Leader>l",  group = "LSP" },
+			{ "<Leader>lf", "<CMD>lua vim.lsp.buf.format({ timeout_ms = 3000 })<CR>",                      desc = "Format document" },
+			{ "<Leader>lA", "<CMD>lua vim.lsp.buf.range_code_action()<CR>",                                desc = "Range code action" },
+			{ "<Leader>ld", "<CMD>lua vim.lsp.buf.declaration()<CR>",                                      desc = "Jumps to declaration" },
+			{ "<Leader>li", "<CMD>lua vim.lsp.buf.implementation()<CR>",                                   desc = "Lists all symbol implementations", },
+			{ "<Leader>ls", "<CMD>lua vim.lsp.buf.signature_help()<CR>",                                   desc = "Show symbol signature information", },
+			{ "<Leader>lt", "<CMD>lua vim.lsp.buf.type_definition()<CR>",                                  desc = "Jumps to type definition" },
+			{ "<Leader>lh", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, desc = "Inlay hints (toggle)" },
+			{ "<Leader>lb", "<CMD>lua vim.diagnostic.goto_prev()<CR>",                                     desc = "Move to previous diagnostic" },
+			{ "<Leader>ln", "<CMD>lua vim.diagnostic.goto_next()<CR>",                                     desc = "Move to next diagnostic" },
+			{ "<Leader>lr", "<CMD>Telescope lsp_references<CR>",                                           desc = "Lsp references" },
 			{
-				{ "<Leader>lw",   group = "Workspace" },
-				{ "<Leader>lwa", "<CMD>lua vim.lsp.buf.add_workspace_folder()<CR>",                         desc = "Add workspace folder" },
-				{ "<Leader>lwr", "<CMD>lua vim.lsp.buf.remove_workspace_folder()<CR>",                      desc = "Remove workspace folders" },
-				{ "<Leader>lwl", "<CMD>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",   desc = "List workspace folders" },
+				{ "<Leader>lw",  group = "Workspace" },
+				{ "<Leader>lwa", "<CMD>lua vim.lsp.buf.add_workspace_folder()<CR>",                       desc = "Add workspace folder" },
+				{ "<Leader>lwr", "<CMD>lua vim.lsp.buf.remove_workspace_folder()<CR>",                    desc = "Remove workspace folders" },
+				{ "<Leader>lwl", "<CMD>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", desc = "List workspace folders" },
 			}
 		}
 	},
@@ -198,6 +198,16 @@ M.plugin = {
 	["chrisgrieser/nvim-rip-substitute"] = {
 		{ "<Leader>:", "<CMD>lua require('rip-substitute').sub()<CR>", desc = "rip substitute", },
 	},
+	["CRAG666/code_runner.nvim"] = {
+		{ "<Leader>r",  group = "Run Code" },
+		{ '<leader>rr', ':RunCode<CR>',     desc = "Runs based on file type (Run Code)" },
+		{ '<leader>rf', ':RunFile<CR>',     desc = "Execute command from its key in current directory (Run Code)" },
+		{ '<leader>rt', ':RunFile tab<CR>', desc = "Run the current file (optionally you can select an opening mode)." },
+		{ '<leader>rp', ':RunProject<CR>',  desc = "Run the current project(If you are in a project otherwise you will not do anything)." },
+		{ '<leader>rq', ':RunClose<CR>',    desc = "Close runner (Run Code)" },
+		{ '<leader>ro', ':CRFiletype<CR>',  desc = "Open json with supported files (Run Code)" },
+		{ '<leader>rO', ':CRProjects<CR>',  desc = "Open json with list of projects (Run Code)" },
+	}
 }
 
 return M
