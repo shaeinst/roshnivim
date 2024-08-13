@@ -44,16 +44,16 @@ vim.opt.viewdir = backup_dir .. "/view"       -- where to store files for :mkvie
 vim.opt.shada = "'100,<50,f50,n" .. backup_dir .. "/shada/shada"
 
 vim.opt.clipboard = vim.opt.clipboard + "unnamedplus" -- copy & paste
-vim.opt.wrap = false                                  -- don't automatically wrap on load
-vim.opt.showmatch = true                              -- show the matching part of the pair for [] {} and ()
+vim.opt.wrap = false                   -- don't automatically wrap on load
+vim.opt.showmatch = true               -- show the matching part of the pair for [] {} and ()
 
-vim.opt.cursorline = true                             -- highlight current line
-vim.opt.number = true                                 -- show line numbers
-vim.opt.relativenumber = true                         -- show relative line number
+vim.opt.cursorline = true              -- highlight current line
+vim.opt.number = true                  -- show line numbers
+vim.opt.relativenumber = true          -- show relative line number
 
-vim.opt.incsearch = true                              -- incremental search
-vim.opt.hlsearch = true                               -- highlighted search results
-vim.opt.ignorecase = true                             -- ignore case sensetive while searching
+vim.opt.incsearch = true               -- incremental search
+vim.opt.hlsearch = true                -- highlighted search results
+vim.opt.ignorecase = true              -- ignore case sensetive while searching
 vim.opt.smartcase = true
 
 vim.opt.scrolloff = 1                  -- when scrolling, keep cursor 1 lines away from screen border
@@ -72,21 +72,27 @@ vim.opt.autoindent = true -- maintain indent of current line
 
 vim.opt.shiftround = true
 
-vim.opt.splitbelow = true                                  -- open horizontal splits below current window
-vim.opt.splitright = true                                  -- open vertical splits to the right of the current window
-vim.opt.laststatus = 3                                     -- always show status line. 3 means Global Status Line
+vim.opt.splitbelow = true    -- open horizontal splits below current window
+vim.opt.splitright = true    -- open vertical splits to the right of the current window
+vim.opt.laststatus = 3       -- always show status line. 3 means Global Status Line
 -- opt.colorcolumn = "79", -- vertical word limit line
-vim.opt.cmdheight = 1                                      -- command height
+vim.opt.cmdheight = 1        -- command height
 
-vim.opt.hidden = true                                      -- allows you to hide buffers with unsaved changes without being prompted
-vim.opt.inccommand = "split"                               -- live preview of :s results
-vim.opt.shell = "zsh"                                      -- shell to use for `!`, `:!`, `system()` etc.
+vim.opt.hidden = true        -- allows you to hide buffers with unsaved changes without being prompted
+vim.opt.inccommand = "split" -- live preview of :s results
+vim.opt.shell = "zsh"        -- shell to use for `!`, `:!`, `system()` etc.
 -- disable it for batter support folke/noice.nvim
--- vim.opt.lazyredraw = true                                  -- faster scrolling
+-- vim.opt.lazyredraw = true -- faster scrolling
 
 vim.opt.wildignore = vim.opt.wildignore + "*.o,*.rej,*.so" -- patterns to ignore during file-navigation
 vim.opt.completeopt = "menuone,noselect,noinsert"          -- completion options
 
-vim.opt.showmode = false                                   -- If in Insert, Replace or Visual mode put a message on the last line.
+vim.opt.showmode = false  -- If in Insert, Replace or Visual mode put a message on the last line.
 
--- vim.opt.cmdheight = 0                                  -- command height
+-- vim.opt.cmdheight = 0  -- command height
+
+vim.filetype.add({ -- Add custom filetupes
+	extension = {
+		['http'] = 'http',
+	},
+})

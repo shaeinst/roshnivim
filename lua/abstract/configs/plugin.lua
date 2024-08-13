@@ -29,6 +29,7 @@ M.plugins = {
 	"hop",
 	"hovercraft",
 	"indent-blankline",
+	"kulala",
 	"lazydev",
 	"lsp_signature",
 	"lspconfig",

@@ -209,8 +209,17 @@ M.plugin = {
 		{ '<leader>rO', ':CRProjects<CR>',  desc = "Open json with list of projects (Run Code)" },
 	},
 	["akinsho/toggleterm.nvim"] = {
-		{ "<Leader>T", group = "Terminal" },
+		-- { "<Leader>T", group = "Terminal" },
 	},
+
+	["mistweaverco/kulala.nvim"] = {
+		{ "<Leader>p",  group = "HTTP" },
+		{ "<Leader>pp", "<CMD>lua require('kulala').run()<CR>",         desc = "Make HTTP request" },
+		{ "<Leader>ph", "<CMD>lua require('kulala').jump_prev()<CR>",   desc = "jump to the previous request" },
+		{ "<Leader>pl", "<CMD>lua require('kulala').jump_next()<CR>",   desc = "jump to the next request" },
+		{ "<Leader>pt", "<CMD>lua require('kulala').toggle_view()<CR>", desc = "Response view (Toggle )" },
+
+	}
 }
 
 return M
