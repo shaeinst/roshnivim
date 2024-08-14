@@ -214,10 +214,11 @@ M.plugin = {
 
 	["mistweaverco/kulala.nvim"] = {
 		{ "<Leader>p",  group = "HTTP" },
-		{ "<Leader>pp", "<CMD>lua require('kulala').run()<CR>",         desc = "Make HTTP request" },
-		{ "<Leader>ph", "<CMD>lua require('kulala').jump_prev()<CR>",   desc = "jump to the previous request" },
-		{ "<Leader>pl", "<CMD>lua require('kulala').jump_next()<CR>",   desc = "jump to the next request" },
-		{ "<Leader>pt", "<CMD>lua require('kulala').toggle_view()<CR>", desc = "Response view (Toggle )" },
+		{ "<Leader>pp", "<CMD>lua require('kulala').run()<CR>",              desc = "Make HTTP request" },
+		{ "<Leader>ph", "<CMD>lua require('kulala').jump_prev()<CR>",        desc = "Jump to the previous request" },
+		{ "<Leader>pl", "<CMD>lua require('kulala').jump_next()<CR>",        desc = "Jump to the next request" },
+		{ "<Leader>pe", "<CMD>lua require('kulala').set_selected_env()<CR>", desc = "Select environment" },
+		{ "<Leader>pt", "<CMD>lua require('kulala').toggle_view()<CR>",      desc = "Response view (Toggle )" },
 
 	},
 	["rest-nvim/rest.nvim"] = {
