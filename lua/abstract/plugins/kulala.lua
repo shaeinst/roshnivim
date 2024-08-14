@@ -20,7 +20,7 @@ spec.config = function()
 	require("kulala").setup({
 		-- split direction
 		-- possible values: "vertical", "horizontal"
-		split_direction = "vertical",
+		split_direction = "horizontal",
 		-- default_view, body or headers or headers_body
 		default_view = "body",
 		-- dev, test, prod, can be anything
