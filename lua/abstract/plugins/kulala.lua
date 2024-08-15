@@ -17,6 +17,7 @@ local spec = {
 }
 
 spec.config = function()
+	require("abstract.utils.map").set_map("mistweaverco/kulala.nvim")
 	require("kulala").setup({
 		-- split direction
 		-- possible values: "vertical", "horizontal"
@@ -62,7 +63,6 @@ spec.config = function()
 		-- enable winbar
 		winbar = false,
 	})
-	require("abstract.utils.map").set_map("mistweaverco/kulala.nvim")
 end
 
 return spec
