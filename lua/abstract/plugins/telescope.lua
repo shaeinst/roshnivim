@@ -21,7 +21,7 @@ local spec = {
 		"nvim-telescope/telescope-live-grep-args.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
-	cmd = { "Telescope" },
+	cmd = { "Telescope", "Mason" },
 	keys = require("abstract.configs.mapping").plugin["nvim-telescope/telescope.nvim"],
 }
 
