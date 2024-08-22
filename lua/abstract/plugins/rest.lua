@@ -1,8 +1,8 @@
 --[[
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ─────────────────────────────────────────────────
-Plugin: kulala.nvim
-Github: https://github.com/mistweaverco/kulala.nvim
+Plugin: rest.nvim
+Github: https://github.com/rest-nvim/rest.nvim
 
 A fast Neovim http client written in Lua
 ─────────────────────────────────────────────────
