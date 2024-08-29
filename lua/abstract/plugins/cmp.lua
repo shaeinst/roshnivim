@@ -18,6 +18,7 @@ it not breaks anything.
 
 local spec = {
 	"yioneko/nvim-cmp",
+	branch = "perf", -- yioneko/nvim-cmp specific branch
 	dependencies = {
 		{ "hrsh7th/cmp-buffer", lazy = true }, -- nvim-cmp source for buffer words.
 		{ "hrsh7th/cmp-cmdline", lazy = true }, -- nvim-cmp source for vim's cmdline.
