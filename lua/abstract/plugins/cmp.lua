@@ -2,16 +2,22 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ─────────────────────────────────────────────────
 Plugin: nvim-cmp
-Github: https://github.com/hrsh7th/nvim-cmp/
+Github: https://github.com/hrsh7th/nvim-cmp
+        https://github.com/yioneko/nvim-cmp
 
 A completion engine plugin for neovim written in Lua.
 Completion sources are installed from external repositories and "sourced".
+
+NOTE:
+yioneko/nvim-cmp is a fork of hrsh7th/nvim-cmp with
+performance optimizations. i will be using it till
+it not breaks anything.
 ─────────────────────────────────────────────────
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 --]]
 
 local spec = {
-	"hrsh7th/nvim-cmp",
+	"yioneko/nvim-cmp",
 	dependencies = {
 		{ "hrsh7th/cmp-buffer", lazy = true }, -- nvim-cmp source for buffer words.
 		{ "hrsh7th/cmp-cmdline", lazy = true }, -- nvim-cmp source for vim's cmdline.
