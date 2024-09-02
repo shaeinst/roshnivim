@@ -17,7 +17,6 @@ M.plugins = {
 	"colorizer",
 	"colorscheme",
 	"Comment",
-	"copilot",
 	"dart-vim-plugin",
 	"fidget",
 	"flutter-tools",
