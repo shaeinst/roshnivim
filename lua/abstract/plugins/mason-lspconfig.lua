@@ -56,10 +56,6 @@ local mason_lspconfig = function(hook)
 			-- Rust LSP is maintained by https://github.com/mrcjkb/rustaceanvim
 			require("abstract.plugins.rustaceanvim").setup(hook)
 		end,
-		["tsserver"] = function()
-			-- Typescript LSP is maintained by https://github.com/pmizio/typescript-tools.nvim
-			require("abstract.plugins.typescript-tools").setup(hook)
-		end,
 		["jdtls"] = function()
 			-- Java LSP is maintained by https://github.com/nvim-java/nvim-java
 			require("abstract.plugins.nvim-java").setup()

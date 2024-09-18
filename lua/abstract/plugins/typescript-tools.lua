@@ -11,10 +11,11 @@ Github:    https://github.com/pmizio/typescript-tools.nvim
 
 local spec = {
 	"pmizio/typescript-tools.nvim",
+	ft = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
 	lazy = true,
 }
 
-spec.setup = function(hook)
+spec.config = function()
 	local settings = {
 		-- spawn additional tsserver instance to calculate diagnostics on it
 		separate_diagnostic_server = true,
@@ -59,6 +60,7 @@ spec.setup = function(hook)
 		},
 	}
 
+	local hook = require("abstract.plugins.lspconfig").setup()
 	vim.list_extend(hook, settings)
 	require("typescript-tools").setup(hook)
 end
