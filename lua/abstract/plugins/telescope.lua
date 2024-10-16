@@ -22,10 +22,15 @@ local spec = {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	cmd = { "Telescope", "Mason" },
-	keys = require("abstract.configs.mapping").plugin["nvim-telescope/telescope.nvim"],
+	keys = vim.tbl_extend(
+		"keep",
+		{ ":", "t" },
+		require("abstract.configs.mapping").plugin["nvim-telescope/telescope.nvim"]
+	),
 }
 
 spec.config = function()
+	require("abstract.utils.map").set_map("nvim-telescope/telescope.nvim")
 	local telescope = require("telescope")
 	local actions = require("telescope.actions")
 	local action_layout = require("telescope.actions.layout")

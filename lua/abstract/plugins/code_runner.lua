@@ -18,6 +18,7 @@ local spec = {
 }
 
 spec.config = function()
+	require("abstract.utils.map").set_map("CRAG666/code_runner.nvim")
 	require("code_runner").setup({
 		filetype = {
 			java = {
