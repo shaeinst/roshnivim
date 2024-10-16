@@ -48,7 +48,6 @@ M.plugins = {
 	"penvim",
 	"renamer",
 	"rustaceanvim",
-	"satellite",
 	"SchemaStore",
 	"session-manager",
 	"surround",
