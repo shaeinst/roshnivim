@@ -1,8 +1,8 @@
 --[[
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ─────────────────────────────────────────────────
-Plugin: blink.cmp
-Github: https://github.com/Saghen/blink.cmp
+Plugin-blink.cmp
+Github-https://github.com/Saghen/blink.cmp
 
 Performant, batteries-included completion plugin for Neovim
 ─────────────────────────────────────────────────
@@ -12,11 +12,9 @@ Performant, batteries-included completion plugin for Neovim
 local spec = {
 	"saghen/blink.cmp",
 	lazy = false, -- lazy loading handled internally
-	dependencies = {
-		{ "kawre/neotab.nvim", lazy = true, opts = {} }, -- Simple yet convenient Neovim plugin for tabbing in and out of brackets, parentheses, quotes, and more.
-	},
+	dependencies = {},
 	-- use a release tag to download pre-built binaries
-	-- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+	-- OR build from source, requires nightly-https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 	-- build = 'cargo build --release',
 	version = "v0.*",
 	-- allows extending the providers array elsewhere in your config without having to redefine it
@@ -25,27 +23,15 @@ local spec = {
 
 spec.config = function()
 	local luasnip = require("abstract.plugins.LuaSnip").setup()
-	local neotab = require("neotab")
-	local blink = require("blink.cmp")
 
-	blink.setup({
+	require("blink.cmp").setup({
 
-		snippets = {
-			expand = function(snippet)
-				luasnip.lsp_expand(snippet)
-			end,
-			active = function(filter)
-				if filter and filter.direction then
-					return luasnip.jumpable(filter.direction)
-				end
-				return luasnip.in_snippet()
-			end,
-			jump = function(direction)
-				luasnip.jump(direction)
-			end,
-		},
+		enabled = function()
+			return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
+		end,
+
 		sources = {
-			enabled_providers = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "luasnip", "buffer" },
 		},
 
 		-- When specifying 'preset' in the keymap table, the custom key mappings are merged with the preset,
@@ -68,9 +54,21 @@ spec.config = function()
 			["<C-u>"] = { "scroll_documentation_up", "fallback" },
 			["<C-d>"] = { "scroll_documentation_down", "fallback" },
 		},
-		enabled = function()
-			return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
-		end,
+
+		snippets = {
+			expand = function(snippet)
+				luasnip.lsp_expand(snippet)
+			end,
+			active = function(filter)
+				if filter and filter.direction then
+					return luasnip.jumpable(filter.direction)
+				end
+				return luasnip.in_snippet()
+			end,
+			jump = function(direction)
+				luasnip.jump(direction)
+			end,
+		},
 
 		completion = {
 			trigger = {
