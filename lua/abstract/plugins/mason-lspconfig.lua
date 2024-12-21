@@ -52,6 +52,9 @@ local mason_lspconfig = function(hook)
 		function(server_name)
 			set_lspconfig(server_name, {})
 		end,
+		["ts_ls"] = function()
+			-- Typescript LSP is maintained by https://github.com/pmizio/typescript-tools.nvim
+		end,
 		["rust_analyzer"] = function()
 			-- Rust LSP is maintained by https://github.com/mrcjkb/rustaceanvim
 			require("abstract.plugins.rustaceanvim").setup(hook)
@@ -139,7 +142,16 @@ spec.setup = function()
 		-- A list of servers to automatically install if they're not already installed. Example: { "rust_analyzer@nightly", "lua_ls" }
 		-- This setting has no relation with the `automatic_installation` setting.
 		---@type string[]
-		ensure_installed = {},
+		ensure_installed = {
+			"bashls",
+			"cssls",
+			"eslint",
+			"html",
+			"jsonls",
+			"lua_ls",
+			"basedpyright",
+			"ts_ls", -- managed by typescript-tools
+		},
 
 		-- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
 		-- This setting has no relation with the `ensure_installed` setting.

@@ -34,10 +34,12 @@ spec.config = function()
 		tsserver_plugins = {},
 		-- this value is passed to: https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
 		-- memory limit in megabytes or "auto"(basically no limit)
-		tsserver_max_memory = "auto",
+		tsserver_max_memory = "8192", -- 8GB
 		-- described below
 		tsserver_format_options = {},
-		tsserver_file_preferences = {},
+		tsserver_file_preferences = {
+			includeCompletionsForModuleExports = true,
+		},
 		-- locale of all tsserver messages, supported locales you can find here:
 		-- https://github.com/microsoft/TypeScript/blob/3c221fc086be52b19801f6e8d82596d04607ede6/src/compiler/utilitiesPublic.ts#L620
 		tsserver_locale = "en",
