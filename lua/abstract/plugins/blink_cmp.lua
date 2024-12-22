@@ -24,8 +24,9 @@ local spec = {
 spec.config = function()
 	local luasnip = require("abstract.plugins.LuaSnip").setup()
 
-	require("blink.cmp").setup({
-
+	---@module 'blink.cmp'
+	---@type blink.cmp.Config
+	local opts = {
 		enabled = function()
 			return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
 		end,
@@ -70,6 +71,11 @@ spec.config = function()
 			end,
 		},
 
+		signature = {
+			enabled = true,
+			window = { border = "single" },
+		},
+
 		completion = {
 			trigger = {
 				-- When false, will not show the completion window automatically when in a snippet
@@ -94,12 +100,12 @@ spec.config = function()
 				enabled = true,
 				min_width = 15,
 				max_height = 12,
-				border = "rounded",
+				border = "single",
 				-- keep the cursor X lines away from the top/bottom of the window
 				scrolloff = 0,
 
 				draw = {
-					treesitter = true,
+					treesitter = {},
 					align_to_component = "kind",
 					columns = { { "kind_icon", "label", "label_description", "kind" } },
 					components = {
@@ -133,61 +139,59 @@ spec.config = function()
 				window = {
 					max_width = 60,
 					max_height = 20,
-					border = "rounded",
+					border = "single",
 				},
 			},
 			-- Displays a preview of the selected item on the current line
 			ghost_text = {
 				enabled = false,
 			},
-			signature = {
-				enabled = true,
-			},
-			appearance = {
-				highlight_ns = vim.api.nvim_create_namespace("blink_cmp"),
-				-- Sets the fallback highlight groups to nvim-cmp's highlight groups
-				-- Useful for when your theme doesn't support blink.cmp
-				-- Will be removed in a future release
-				use_nvim_cmp_as_default = false,
-				-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-				-- Adjusts spacing to ensure icons are aligned
-				nerd_font_variant = "mono",
+		},
+		appearance = {
+			highlight_ns = vim.api.nvim_create_namespace("blink_cmp"),
+			-- Sets the fallback highlight groups to nvim-cmp's highlight groups
+			-- Useful for when your theme doesn't support blink.cmp
+			-- Will be removed in a future release
+			use_nvim_cmp_as_default = true,
+			-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+			-- Adjusts spacing to ensure icons are aligned
+			nerd_font_variant = "mono",
 
-				kind_icons = {
-					Text = "",
-					Method = "",
-					Function = "󰊕",
-					Constructor = "󰒓",
+			kind_icons = {
+				Text = "",
+				Method = "",
+				Function = "󰊕",
+				Constructor = "󰒓",
 
-					Field = "󰜢",
-					Variable = "󰆦",
-					Property = "󰖷",
+				Field = "󰜢",
+				Variable = "󰆦",
+				Property = "󰖷",
 
-					Class = "",
-					Interface = "",
-					Struct = "",
-					Module = "󰅩",
+				Class = "",
+				Interface = "",
+				Struct = "",
+				Module = "󰅩",
 
-					Unit = "",
-					Value = "󰦨",
-					Enum = "",
-					EnumMember = "",
+				Unit = "",
+				Value = "󰦨",
+				Enum = "",
+				EnumMember = "",
 
-					Keyword = "󰻾",
-					Constant = "󰏿",
+				Keyword = "󰻾",
+				Constant = "󰏿",
 
-					Snippet = "",
-					Color = "",
-					File = "",
-					Reference = "",
-					Folder = "󰉋",
-					Event = "",
-					Operator = "",
-					TypeParameter = " ",
-				},
+				Snippet = "",
+				Color = "",
+				File = "",
+				Reference = "",
+				Folder = "󰉋",
+				Event = "",
+				Operator = "",
+				TypeParameter = " ",
 			},
 		},
-	})
+	}
+	require("blink.cmp").setup(opts)
 end
 
 return spec
