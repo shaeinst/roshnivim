@@ -14,7 +14,7 @@ local spec = { -- Neovim treesitter plugin for setting the commentstring based o
 	lazy = true,
 }
 
-spec.config = function()
+spec.setup = function()
 	-- skip backwards compatibility routines and speed up loading.
 	vim.g.skip_ts_context_commentstring_module = true
 

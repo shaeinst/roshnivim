@@ -15,8 +15,8 @@ local spec = {
 	keys = { "cc", "gc", "gb", { "cc", mode = "v" }, { "gc", mode = "v" }, { "gb", mode = "v" } },
 }
 
-spec.config = function()
-	require("Comment").setup({
+spec.opts = function()
+	return {
 		---Add a space b/w comment and the line
 		---@type boolean
 		padding = true,
@@ -35,7 +35,7 @@ spec.config = function()
 		---Pre-hook, called before commenting the line
 		---@type function|nil
 		-- NOTE: implemented with JoosepAlviste/nvim-ts-context-commentstring
-		pre_hook = require("abstract.plugins.ts-context-commentstring").config(),
+		pre_hook = require("abstract.plugins.ts-context-commentstring").setup(),
 
 		---Post-hook, called after commenting is done
 		---@type function|nil
@@ -60,7 +60,7 @@ spec.config = function()
 			line = "gc", ---line-comment keymap
 			block = "gb", ---block-comment keymap
 		},
-	})
+	}
 end
 
 return spec
