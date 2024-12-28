@@ -68,7 +68,7 @@ spec.opts = {
 			--    - wrap: when the message is too long, it is then displayed on multiple lines.
 			--    - none: the message will not be truncated.
 			--    - oneline: message will be displayed entirely on one line.
-			mode = "none",
+			mode = "oneline",
 		},
 
 		-- Format the diagnostic message.
