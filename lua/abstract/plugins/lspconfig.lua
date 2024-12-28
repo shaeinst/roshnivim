@@ -78,10 +78,16 @@ local hook = {
 		local _capabilities = vim.lsp.protocol.make_client_capabilities()
 		-- enable LSP's builtin snippet support
 		_capabilities.textDocument.completion.completionItem.snippetSupport = true
-		local _cmp_lsp, cmp_lsp = pcall(require, "cmp_nvim_lsp")
-		if _cmp_lsp then
-			return vim.tbl_deep_extend("force", _capabilities, cmp_lsp.default_capabilities())
-		end
+
+		-- for blink.cmp
+		_capabilities = require("blink.cmp").get_lsp_capabilities(_capabilities)
+
+		-- -- for nvim.cmp
+		-- local _cmp_lsp, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+		-- if _cmp_lsp then
+		-- 	return vim.tbl_deep_extend("force", _capabilities, cmp_lsp.default_capabilities())
+		-- end
+
 		return _capabilities
 	end)(),
 }
