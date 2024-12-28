@@ -21,7 +21,7 @@ local spec = {
 		"nvim-telescope/telescope-live-grep-args.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
-	cmd = { "Telescope", "Mason" },
+	cmd = { "Telescope" },
 	keys = vim.tbl_extend(
 		"keep",
 		{ ":", "t" },

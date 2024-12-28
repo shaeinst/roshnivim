@@ -28,8 +28,8 @@ locally (inside :echo stdpath("data")).
 
 local spec = {
 	"williamboman/mason.nvim",
-	event = { "BufRead", "BufNewFile", "InsertEnter" },
-	keys = { ":", "M" },
+	lazy = true,
+	event = { "CmdlineEnter", "BufRead", "BufNewFile", "InsertEnter" },
 }
 
 local mason_config = {
