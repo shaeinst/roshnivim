@@ -232,6 +232,14 @@ M.plugin = {
 		{ "<Leader>rr", "<CMD>Rest run<CR>",      desc = "Run request under cursor" },
 		{ "<Leader>rl", "<CMD>Rest run last<CR>", desc = "Re-run latest request" },
 	},
+
+	["folke/snacks.nvim"] = {
+		{ "<Leader>s",   group = "Snacks" },
+		{ "<Leader>sn", "<CMD>lua Snacks.notifier.show_history()<CR>", desc = "Notifier: history" },
+		{ "<Leader>vl",  "<CMD>lua Snacks.lazygit()<CR>",               desc = "Lazygit: open" },
+		{ "<Leader>vLl", "<CMD>lua Snacks.lazygit.log()<CR>",           desc = "Lazygit: log view" },
+		{ "<Leader>vLf", "<CMD>lua Snacks.lazygit.log_file()<CR>",      desc = "Lazygit: log of the current file" },
+	},
 }
 
 return M
