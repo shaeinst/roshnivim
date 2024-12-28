@@ -21,177 +21,199 @@ local spec = {
 	opts_extend = { "sources.default" },
 }
 
-spec.config = function()
-	local luasnip = require("abstract.plugins.LuaSnip").setup()
+---@module 'blink.cmp'
+---@type blink.cmp.Config
+spec.opts = {
+	enabled = function()
+		if vim.b.completion == false then
+			return false
+		end
+		local buftype = vim.bo.buftype
+		if
+			--
+			buftype == "prompt"
+			or buftype == "nofile"
+			or buftype == "TelescopePrompt"
+			or buftype == "alpha"
+		then
+			return false
+		end
+		return true
+	end,
 
-	---@module 'blink.cmp'
-	---@type blink.cmp.Config
-	local opts = {
-		enabled = function()
-			return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
+	sources = {
+		-- default = { "lsp", "path", "luasnip", "buffer" },
+		default = function(ctx)
+			local success, node = pcall(vim.treesitter.get_node)
+			if success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
+				return { "path", "buffer" }
+			end
+			return { "lsp", "path", "luasnip", "buffer" }
 		end,
+	},
 
-		sources = {
-			default = { "lsp", "path", "luasnip", "buffer" },
+	-- When specifying 'preset' in the keymap table, the custom key mappings are merged with the preset,
+	-- and any conflicting keys will overwrite the preset mappings.
+	-- The "fallback" command will run the next non blink keymap.
+	--
+	-- Example:
+	--
+	keymap = {
+		["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+		["<C-e>"] = { "hide", "fallback" },
+		["<Enter>"] = { "accept", "fallback" },
+
+		["<Up>"] = { "select_prev", "fallback" },
+		["<Down>"] = { "select_next", "fallback" },
+
+		["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+		["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+
+		["<C-u>"] = { "scroll_documentation_up", "fallback" },
+		["<C-d>"] = { "scroll_documentation_down", "fallback" },
+	},
+
+	snippets = {
+		expand = function(snippet)
+			local luasnip = require("abstract.plugins.LuaSnip").setup()
+			luasnip.lsp_expand(snippet)
+		end,
+		active = function(filter)
+			local luasnip = require("abstract.plugins.LuaSnip").setup()
+			if filter and filter.direction then
+				return luasnip.jumpable(filter.direction)
+			end
+			return luasnip.in_snippet()
+		end,
+		jump = function(direction)
+			local luasnip = require("abstract.plugins.LuaSnip").setup()
+			luasnip.jump(direction)
+		end,
+	},
+
+	signature = {
+		enabled = true,
+		window = { border = "single" },
+	},
+
+	completion = {
+		trigger = {
+			-- When false, will not show the completion window automatically when in a snippet
+			show_in_snippet = false,
+			-- Shows after entering insert mode on top of a trigger character.
+			-- show_on_insert_on_trigger_character = false,
+			-- show_on_trigger_character = true,
+			show_on_keyword = true,
 		},
 
-		-- When specifying 'preset' in the keymap table, the custom key mappings are merged with the preset,
-		-- and any conflicting keys will overwrite the preset mappings.
-		-- The "fallback" command will run the next non blink keymap.
-		--
-		-- Example:
-		--
-		keymap = {
-			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-			["<C-e>"] = { "hide", "fallback" },
-			["<CR>"] = { "accept", "fallback" },
-
-			["<Up>"] = { "select_prev", "fallback" },
-			["<Down>"] = { "select_next", "fallback" },
-
-			["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
-			["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
-
-			["<C-u>"] = { "scroll_documentation_up", "fallback" },
-			["<C-d>"] = { "scroll_documentation_down", "fallback" },
+		list = {
+			-- Maximum number of items to display
+			max_items = 200,
+			-- Controls if completion items will be selected automatically, and whether selection automatically inserts
+			-- 'preselect' will automatically select the first item in the completion list
+			-- 'manual' will not select any item by default
+			-- 'auto_insert' will not select any item by default, and insert the completion items automatically
+			-- when selecting the
+			selection = "auto_insert",
 		},
-
-		snippets = {
-			expand = function(snippet)
-				luasnip.lsp_expand(snippet)
-			end,
-			active = function(filter)
-				if filter and filter.direction then
-					return luasnip.jumpable(filter.direction)
-				end
-				return luasnip.in_snippet()
-			end,
-			jump = function(direction)
-				luasnip.jump(direction)
-			end,
+		accept = {
+			-- Create an undo point when accepting a completion item
+			create_undo_point = true,
 		},
-
-		signature = {
+		menu = {
 			enabled = true,
-			window = { border = "single" },
-		},
+			min_width = 15,
+			max_height = 12,
+			border = "single",
+			-- keep the cursor X lines away from the top/bottom of the window
+			scrolloff = 0,
 
-		completion = {
-			trigger = {
-				-- When false, will not show the completion window automatically when in a snippet
-				show_in_snippet = false,
-			},
-
-			list = {
-				-- Maximum number of items to display
-				max_items = 200,
-				-- Controls if completion items will be selected automatically, and whether selection automatically inserts
-				-- 'preselect' will automatically select the first item in the completion list
-				-- 'manual' will not select any item by default
-				-- 'auto_insert' will not select any item by default, and insert the completion items automatically
-				-- when selecting the
-				selection = "auto_insert",
-			},
-			accept = {
-				-- Create an undo point when accepting a completion item
-				create_undo_point = true,
-			},
-			menu = {
-				enabled = true,
-				min_width = 15,
-				max_height = 12,
-				border = "single",
-				-- keep the cursor X lines away from the top/bottom of the window
-				scrolloff = 0,
-
-				draw = {
-					treesitter = {},
-					align_to_component = "kind",
-					columns = { { "kind_icon", "label", "label_description", "kind" } },
-					components = {
-						kind_icon = {
-							text = function(ctx)
-								return ctx.kind_icon .. " "
-							end,
-						},
-						label = {
-							width = { max = 35, fill = false },
-						},
-						label_description = {
-							width = { max = 12, fill = true },
-							text = function(ctx)
-								return " " .. ctx.label_description
-							end,
-						},
-						kind = {
-							ellipsis = false,
-							width = { fill = false },
-						},
+			draw = {
+				treesitter = {},
+				align_to_component = "kind",
+				columns = { { "kind_icon", "label", "label_description", "kind" } },
+				components = {
+					kind_icon = {
+						text = function(ctx)
+							return ctx.kind_icon .. " "
+						end,
+					},
+					label = {
+						width = { max = 35, fill = false },
+					},
+					label_description = {
+						width = { max = 12, fill = true },
+						text = function(ctx)
+							return " " .. ctx.label_description
+						end,
+					},
+					kind = {
+						ellipsis = false,
+						width = { fill = false },
 					},
 				},
 			},
-			documentation = {
-				auto_show = true,
-				auto_show_delay_ms = 500, -- Delay before showing the documentation window
-				update_delay_ms = 150, -- Delay before updating the documentation window when selecting a new item, while an existing item is still visible
-				-- Whether to use treesitter highlighting, disable if you run into performance issues
-				treesitter_highlighting = true,
-				window = {
-					max_width = 60,
-					max_height = 20,
-					border = "single",
-				},
-			},
-			-- Displays a preview of the selected item on the current line
-			ghost_text = {
-				enabled = false,
+		},
+		documentation = {
+			auto_show = true,
+			auto_show_delay_ms = 500, -- Delay before showing the documentation window
+			update_delay_ms = 150, -- Delay before updating the documentation window when selecting a new item, while an existing item is still visible
+			-- Whether to use treesitter highlighting, disable if you run into performance issues
+			treesitter_highlighting = true,
+			window = {
+				max_width = 60,
+				max_height = 20,
+				border = "single",
 			},
 		},
-		appearance = {
-			highlight_ns = vim.api.nvim_create_namespace("blink_cmp"),
-			-- Sets the fallback highlight groups to nvim-cmp's highlight groups
-			-- Useful for when your theme doesn't support blink.cmp
-			-- Will be removed in a future release
-			use_nvim_cmp_as_default = true,
-			-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-			-- Adjusts spacing to ensure icons are aligned
-			nerd_font_variant = "mono",
-
-			kind_icons = {
-				Text = "",
-				Method = "",
-				Function = "󰊕",
-				Constructor = "󰒓",
-
-				Field = "󰜢",
-				Variable = "󰆦",
-				Property = "󰖷",
-
-				Class = "",
-				Interface = "",
-				Struct = "",
-				Module = "󰅩",
-
-				Unit = "",
-				Value = "󰦨",
-				Enum = "",
-				EnumMember = "",
-
-				Keyword = "󰻾",
-				Constant = "󰏿",
-
-				Snippet = "",
-				Color = "",
-				File = "",
-				Reference = "",
-				Folder = "󰉋",
-				Event = "",
-				Operator = "",
-				TypeParameter = " ",
-			},
+		-- Displays a preview of the selected item on the current line
+		ghost_text = {
+			enabled = false,
 		},
-	}
-	require("blink.cmp").setup(opts)
-end
+	},
+	appearance = {
+		highlight_ns = vim.api.nvim_create_namespace("blink_cmp"),
+		-- Sets the fallback highlight groups to nvim-cmp's highlight groups
+		-- Useful for when your theme doesn't support blink.cmp
+		-- Will be removed in a future release
+		use_nvim_cmp_as_default = true,
+		-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+		-- Adjusts spacing to ensure icons are aligned
+		nerd_font_variant = "mono",
+
+		kind_icons = {
+			Text = "",
+			Method = "",
+			Function = "󰊕",
+			Constructor = "󰒓",
+
+			Field = "󰜢",
+			Variable = "󰆦",
+			Property = "󰖷",
+
+			Class = "",
+			Interface = "",
+			Struct = "",
+			Module = "󰅩",
+
+			Unit = "",
+			Value = "󰦨",
+			Enum = "",
+			EnumMember = "",
+
+			Keyword = "󰻾",
+			Constant = "󰏿",
+
+			Snippet = "",
+			Color = "",
+			File = "",
+			Reference = "",
+			Folder = "󰉋",
+			Event = "",
+			Operator = "",
+			TypeParameter = " ",
+		},
+	},
+}
 
 return spec
