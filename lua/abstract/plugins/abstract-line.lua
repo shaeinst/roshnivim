@@ -13,7 +13,7 @@ local spec = {
 	"Abstract-IDE/abstract-line",
 }
 
-spec.config = function()
+spec.setup = function()
 	require("abstract-line").setup()
 end
 

@@ -1,27 +1,23 @@
 --[[
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ─────────────────────────────────────────────────
-Plugin: abstract-winbar
-Github: https://github.com/Abstract-IDE/abstract-winbar
+Plugin: Abstract-cs
+Github: https://github.com/Abstract-IDE/Abstract-cs
 
-Neovim Winbar: Elevating Awesome. Simple, Dynamic, Navic-Powered.
+ Colorscheme for (neo)vim written in lua,
+ specially made for roshnivim with Tree-sitter support.
 ─────────────────────────────────────────────────
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 --]]
 
 local spec = {
-	"Abstract-IDE/abstract-winbar",
-	lazy = true,
-	event = { "BufRead" },
-	dependencies = {
-		"SmiteshP/nvim-navic", -- Simple winbar/statusline plugin that shows your current code context
-	},
+	"Abstract-IDE/Abstract-cs",
+	branch = "rewrite",
 }
 
-spec.setup = function()
-	require("abstract-winbar").setup({
-		-- exclude_filetypes = {},
-	})
+spec.setup = function(opts)
+	opts = opts or {}
+	require("abstract_cs").setup(opts)
 end
 
 return spec
