@@ -30,11 +30,12 @@ spec.opts = {
 		end
 		local buftype = vim.bo.buftype
 		if
-			--
 			buftype == "prompt"
+			or buftype == "alpha"
+			or buftype == "neo-tree"
+			or buftype == "neo-tree-popup"
 			or buftype == "nofile"
 			or buftype == "TelescopePrompt"
-			or buftype == "alpha"
 		then
 			return false
 		end
