@@ -139,10 +139,10 @@ spec.opts = {
 						end,
 					},
 					label = {
-						width = { max = 35, fill = false },
+						width = { max = 36, fill = false },
 					},
 					label_description = {
-						width = { max = 12, fill = true },
+						width = { max = 14, fill = true },
 						text = function(ctx)
 							return " " .. ctx.label_description
 						end,
