@@ -204,6 +204,11 @@ opts.dashboard = {
 			return nvim_verion
 		end
 
+		local session = function()
+			require("telescope")
+			vim.cmd([[SessionManager load_session]])
+		end
+
 		-- stylua: ignore
 		return {
 			{ align = "center", text = { header() } },
@@ -213,7 +218,7 @@ opts.dashboard = {
 				padding = 2,
 				{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
 				{ icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-				{ icon = " ", key = "s", desc = "Sessions", action = ":lua require('telescope'):SessionManager load_session" },
+				{ icon = " ", key = "s", desc = "Sessions", action = session },
 				{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
 				{ icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
 				{ icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
