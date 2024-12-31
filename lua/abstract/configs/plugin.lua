@@ -9,7 +9,6 @@ M.deps = {
 M.plugins = {
 	"abstract-autocmds",
 	"abstract-cursor",
-	"alpha-nvim",
 	"autopairs",
 	"blink_cmp",
 	"bufdelete",

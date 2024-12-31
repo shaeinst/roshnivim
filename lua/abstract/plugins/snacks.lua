@@ -176,40 +176,14 @@ opts.notifier = {
 
 -- Beautiful declarative dashboards
 ---@class snacks.dashboard.Config
+---@field enabled? boolean
 ---@field sections snacks.dashboard.Section
 ---@field formats table<string, snacks.dashboard.Text|fun(item:snacks.dashboard.Item, ctx:snacks.dashboard.Format.ctx):snacks.dashboard.Text>
 opts.dashboard = {
-	enabled = false,
-	width = 60,
-	row = nil, -- dashboard position. nil for center
-	col = nil, -- dashboard position. nil for center
-	pane_gap = 4, -- empty columns between vertical panes
-	autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", -- autokey sequence
-	-- These settings are used by some built-in sections
-	preset = {
-		-- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
-		---@type fun(cmd:string, opts:table)|nil
-		pick = nil,
-		-- Used by the `keys` section to show keymaps.
-		-- Set your custom keymaps here.
-		-- When using a function, the `items` argument are the default keymaps.
-		---@type snacks.dashboard.Item[]
-		keys = {
-			{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-			{ icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-			{
-				icon = " ",
-				key = "s",
-				desc = "Sessions",
-				action = ":lua require('telescope'):SessionManager load_session",
-			},
-			{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-			{ icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-			{ icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-			{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
-		},
-		-- Used by the `header` section
-		header = (function()
+	enabled = true,
+	width = 40,
+	sections = function()
+		local header = function()
 			local _header = ""
 			_header = _header .. "┃█████       " .. "\n"
 			_header = _header .. "┃██ ██      " .. "\n"
@@ -217,41 +191,42 @@ opts.dashboard = {
 			_header = _header .. "┃██ ████████  " .. "\n"
 			_header = _header .. "┃██    ██   " .. "\n"
 			_header = _header .. "┃██     ██  " .. "\n"
-
 			return _header
-		end)(),
-	},
+		end
 
-	-- item field formatters
-	formats = {
-		icon = function(item)
-			if item.file and item.icon == "file" or item.icon == "directory" then
-				return M.icon(item.file, item.icon)
+		local info = function()
+			local _datetime, datetime = pcall(os.date, " %I:%M:%p (%d-%m-%Y)")
+			local version = vim.version()
+			local nvim_verion = string.format("v%d.%d.%d", version.major, version.minor, version.patch)
+			if _datetime then
+				return nvim_verion .. " | " .. datetime
 			end
-			return { item.icon, width = 2, hl = "icon" }
-		end,
-		footer = { "%s", align = "center" },
-		header = { "%s", align = "center" },
-		file = function(item, ctx)
-			local fname = vim.fn.fnamemodify(item.file, ":~")
-			fname = ctx.width and #fname > ctx.width and vim.fn.pathshorten(fname) or fname
-			if #fname > ctx.width then
-				local dir = vim.fn.fnamemodify(fname, ":h")
-				local file = vim.fn.fnamemodify(fname, ":t")
-				if dir and file then
-					file = file:sub(-(ctx.width - #dir - 2))
-					fname = dir .. "/…" .. file
-				end
-			end
-			local dir, file = fname:match("^(.*)/(.+)$")
-			return dir and { { dir .. "/", hl = "dir" }, { file, hl = "file" } } or { { fname, hl = "file" } }
-		end,
-	},
-	sections = {
-		{ section = "header" },
-		{ section = "keys", gap = 1, padding = 1 },
-		{ section = "startup" },
-	},
+			return nvim_verion
+		end
+
+		-- stylua: ignore
+		return {
+			{ align = "center", text = { header() } },
+			{
+				gap = 0,
+				indent = 0,
+				padding = 2,
+				{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+				{ icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+				{ icon = " ", key = "s", desc = "Sessions", action = ":lua require('telescope'):SessionManager load_session" },
+				{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+				{ icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+				{ icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+				{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+			},
+			{
+				align = "center",
+				gap = 0,
+				{ section = "startup" },
+				{ text = { info() } },
+			}
+		}
+	end,
 }
 
 spec.opts = opts
