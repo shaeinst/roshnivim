@@ -28,7 +28,6 @@ M.plugins = {
 	"hovercraft",
 	"kulala",
 	"lazydev",
-	"lsp_signature",
 	"lspconfig",
 	"LuaSnip",
 	"markdown-preview",
