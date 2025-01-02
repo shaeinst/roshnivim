@@ -130,8 +130,16 @@ spec.opts = {
 			scrolloff = 0,
 
 			draw = {
-				treesitter = {},
-				align_to_component = "kind",
+				-- align_to_component = "kind",
+				-- -- Left and right padding, optionally { left, right } for different padding on each side
+				-- padding = 1,
+				-- -- Gap between columns
+				-- gap = 1,
+
+				-- Aligns the keyword you've typed to a component in the menu
+				align_to = "none", -- 'label' or 'none' to disable, or 'cursor' to align to the cursor
+				-- Use treesitter to highlight the label text for the given list of sources
+				treesitter = {}, -- { 'lsp' }
 				columns = { { "kind_icon", "label", "label_description", "kind" } },
 				components = {
 					kind_icon = {
