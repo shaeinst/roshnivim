@@ -219,7 +219,7 @@ M.plugin = {
 	},
 
 	["mistweaverco/kulala.nvim"] = {
-		{ "<Leader>r",  group = "HTTP" },
+		{ "<Leader>r",  group = "HTTP-Request" },
 		{ "<Leader>rr", "<CMD>lua require('kulala').run()<CR>",              desc = "Make HTTP request" },
 		{ "<Leader>rh", "<CMD>lua require('kulala').jump_prev()<CR>",        desc = "Jump to the previous request" },
 		{ "<Leader>rl", "<CMD>lua require('kulala').jump_next()<CR>",        desc = "Jump to the next request" },

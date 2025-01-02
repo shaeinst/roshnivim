@@ -13,12 +13,11 @@ local spec = {
 	"mistweaverco/kulala.nvim",
 	lazy = true,
 	ft = "http",
-	keys = require("abstract.configs.mapping").plugin["mistweaverco/kulala.nvim"],
 }
 
-spec.config = function()
+spec.opts = function()
 	require("abstract.utils.map").set_map("mistweaverco/kulala.nvim")
-	require("kulala").setup({
+	return {
 		-- split direction
 		-- possible values: "vertical", "horizontal"
 		split_direction = "horizontal",
@@ -62,7 +61,7 @@ spec.config = function()
 		-- },
 		-- enable winbar
 		winbar = false,
-	})
+	}
 end
 
 return spec
