@@ -148,7 +148,7 @@ spec.opts = {
 						end,
 					},
 					label = {
-						width = { max = 36, fill = false },
+						width = { max = 30, fill = false },
 					},
 					label_description = {
 						width = { max = 14, fill = true },
