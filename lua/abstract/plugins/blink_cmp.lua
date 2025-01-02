@@ -99,12 +99,11 @@ spec.opts = {
 
 	completion = {
 		trigger = {
-			-- When false, will not show the completion window automatically when in a snippet
-			show_in_snippet = false,
-			-- Shows after entering insert mode on top of a trigger character.
-			-- show_on_insert_on_trigger_character = false,
-			-- show_on_trigger_character = true,
-			show_on_keyword = true,
+			-- SRC: https://cmp.saghen.dev/configuration/completion.html#trigger
+			show_in_snippet = false, -- When false, will not show the completion window automatically when in a snippet
+			show_on_keyword = true, -- Shows after typing a keyword, typically an alphanumeric character or _
+			show_on_trigger_character = true, -- Shows after typing a trigger character, defined by the sources. For example for Lua or Rust, the LSP will define . as a trigger character.
+			show_on_insert_on_trigger_character = true, -- Shows after entering insert mode on top of a trigger character.
 		},
 
 		list = {
@@ -126,20 +125,14 @@ spec.opts = {
 			min_width = 15,
 			max_height = 12,
 			border = "single",
-			-- keep the cursor X lines away from the top/bottom of the window
-			scrolloff = 0,
+			scrolloff = 0, -- keep the cursor X lines away from the top/bottom of the window
 
 			draw = {
-				-- align_to_component = "kind",
-				-- -- Left and right padding, optionally { left, right } for different padding on each side
-				-- padding = 1,
-				-- -- Gap between columns
-				-- gap = 1,
+				-- padding = 1, -- Left and right padding, optionally { left, right } for different padding on each side
+				-- gap = 1, -- Gap between columns
 
-				-- Aligns the keyword you've typed to a component in the menu
-				align_to = "none", -- 'label' or 'none' to disable, or 'cursor' to align to the cursor
-				-- Use treesitter to highlight the label text for the given list of sources
-				treesitter = {}, -- { 'lsp' }
+				align_to = "none", -- Aligns the keyword you've typed to a component in the menu. 'label' or 'none' to disable, or 'cursor' to align to the cursor
+				treesitter = { "lsp" }, -- Use treesitter to highlight the label text for the given list of sources
 				columns = { { "kind_icon", "label", "label_description", "kind" } },
 				components = {
 					kind_icon = {
