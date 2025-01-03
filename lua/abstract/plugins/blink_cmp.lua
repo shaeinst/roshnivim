@@ -1,8 +1,8 @@
 --[[
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ─────────────────────────────────────────────────
-Plugin-blink.cmp
-Github-https://github.com/Saghen/blink.cmp
+Plugin: blink.cmp
+Source: github.com/Saghen/blink.cmp
 
 Performant, batteries-included completion plugin for Neovim
 ─────────────────────────────────────────────────

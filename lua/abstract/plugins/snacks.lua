@@ -215,7 +215,7 @@ opts.dashboard = {
 			{
 				gap = 0,
 				indent = 0,
-				padding = 2,
+				padding = 4,
 				{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
 				{ icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
 				{ icon = " ", key = "s", desc = "Sessions", action = session },
