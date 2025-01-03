@@ -9,6 +9,8 @@ Neovim Winbar: Elevating Awesome. Simple, Dynamic, Navic-Powered.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 --]]
 
+ABSTRACT.PLUGINS["SmiteshP/nvim-navic"].enabled = true
+
 local spec = {
 	"Abstract-IDE/abstract-winbar",
 	lazy = true,
@@ -18,8 +20,8 @@ local spec = {
 	},
 }
 
-spec.setup = function()
-	require("abstract-winbar").setup({
+spec.setup = function(opts)
+	require("abstract-winbar").setup(opts or {
 		-- exclude_filetypes = {},
 	})
 end

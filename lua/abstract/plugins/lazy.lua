@@ -48,7 +48,7 @@ M.opts = {
 			-- add any custom paths here that you want to includes in the rtp
 			---@type string[]
 			paths = {
-				vim.g.ABSTRACT_INSTALL_PATH,
+				ABSTRACT["INSTALL_PATH"],
 				NVIM_DATA_DIR .. "/treesitter",
 			},
 			---@type string[] list any plugins you want to disable here

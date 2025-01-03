@@ -64,10 +64,10 @@ local hook = {
 		-- client.server_capabilities.documentFormattingProvider = false
 		-- client.server_capabilities.documentRangeFormattingProvider = false
 		--------------------------
-		-- lsp support on winbar
-		local _navic, navic = pcall(require, "nvim-navic")
-		if _navic then
-			if client.server_capabilities.documentSymbolProvider then
+		-- lsp support on winbar with nvim-navic
+		if ABSTRACT.PLUGINS["SmiteshP/nvim-navic"].enabled then
+			local _navic, navic = pcall(require, "nvim-navic")
+			if _navic and client.server_capabilities.documentSymbolProvider then
 				navic.attach(client, bufnr)
 			end
 		end
