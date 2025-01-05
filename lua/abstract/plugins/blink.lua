@@ -100,7 +100,7 @@ spec.opts = {
 	completion = {
 		trigger = {
 			-- SRC: https://cmp.saghen.dev/configuration/completion.html#trigger
-			show_in_snippet = false, -- When false, will not show the completion window automatically when in a snippet
+			show_in_snippet = true, -- When false, will not show the completion window automatically when in a snippet
 			show_on_keyword = true, -- Shows after typing a keyword, typically an alphanumeric character or _
 			show_on_trigger_character = true, -- Shows after typing a trigger character, defined by the sources. For example for Lua or Rust, the LSP will define . as a trigger character.
 			show_on_insert_on_trigger_character = true, -- Shows after entering insert mode on top of a trigger character.
