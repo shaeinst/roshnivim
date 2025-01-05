@@ -10,7 +10,7 @@ M.plugins = {
 	"abstract-autocmds",
 	"abstract-cursor",
 	"autopairs",
-	"blink_cmp",
+	"blink",
 	"bufdelete",
 	"code_runner",
 	"colorizer",
