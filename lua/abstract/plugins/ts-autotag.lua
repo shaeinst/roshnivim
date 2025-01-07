@@ -1,10 +1,10 @@
 --[[
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ─────────────────────────────────────────────────
-Plugin:    nvim-ts-autotag
-Github:    github.com/windwp/nvim-ts-autotag
+Plugin: nvim-ts-autotag
+Source: github.com/windwp/nvim-ts-autotag
 
- Use treesitter to auto close and auto rename html tag
+Use treesitter to auto close and auto rename html tag
 ─────────────────────────────────────────────────
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 --]]

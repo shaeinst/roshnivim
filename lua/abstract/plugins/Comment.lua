@@ -2,7 +2,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ─────────────────────────────────────────────────
 Plugin: Comment.nvim
-Github: https://github.com/numToStr/Comment.nvim
+Source: https://github.com/numToStr/Comment.nvim
 
 🧠 💪 // Smart and powerful comment plugin for neovim.
 Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more
