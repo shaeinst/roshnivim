@@ -1,17 +1,22 @@
 --[[
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ─────────────────────────────────────────────────
-Plugin:    nvim-colorizer.lua
-Github:    https://github.com/NvChad/nvim-colorizer.lua
+Plugin: nvim-colorizer.lua
+Source: https://github.com/catgoose/nvim-colorizer.lua
 
 A high-performance color highlighter for Neovim which has
 no external dependencies! Written in performant Luajit.
+
+NOTE:
+Originally NvChad (https://github.com/NvChad/nvim-colorizer.lua)
+forked it from https://github.com/norcalli/nvim-colorizer.lua
+now it moved to https://github.com/catgoose/nvim-colorizer.lua
 ─────────────────────────────────────────────────
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 --]]
 
 local spec = {
-	"NvChad/nvim-colorizer.lua",
+	"catgoose/nvim-colorizer.lua",
 	event = { "BufReadPre", "BufNewFile", "InsertEnter" },
 }
 
