@@ -42,54 +42,37 @@ spec.opts = {
 		return true
 	end,
 
+	-- https://cmp.saghen.dev/configuration/sources.html
 	sources = {
-		-- default = { "lsp", "path", "luasnip", "buffer" },
+		-- default = { "lsp", "path", "snippets", "buffer" },
 		default = function(ctx)
 			local success, node = pcall(vim.treesitter.get_node)
 			if success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
 				return { "path", "buffer" }
 			end
-			return { "lsp", "path", "luasnip", "buffer" }
+			return { "lsp", "path", "snippets", "buffer" }
 		end,
 	},
 
-	-- When specifying 'preset' in the keymap table, the custom key mappings are merged with the preset,
-	-- and any conflicting keys will overwrite the preset mappings.
-	-- The "fallback" command will run the next non blink keymap.
-	--
-	-- Example:
-	--
-	keymap = {
-		["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-		["<C-e>"] = { "hide", "fallback" },
-		["<Enter>"] = { "accept", "fallback" },
-
-		["<Up>"] = { "select_prev", "fallback" },
-		["<Down>"] = { "select_next", "fallback" },
-
-		["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
-		["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
-
-		["<C-u>"] = { "scroll_documentation_up", "fallback" },
-		["<C-d>"] = { "scroll_documentation_down", "fallback" },
-	},
-
+	-- https://cmp.saghen.dev/configuration/snippets.html
 	snippets = {
-		expand = function(snippet)
-			local luasnip = require("abstract.plugins.LuaSnip").setup()
-			luasnip.lsp_expand(snippet)
-		end,
-		active = function(filter)
-			local luasnip = require("abstract.plugins.LuaSnip").setup()
-			if filter and filter.direction then
-				return luasnip.jumpable(filter.direction)
-			end
-			return luasnip.in_snippet()
-		end,
-		jump = function(direction)
-			local luasnip = require("abstract.plugins.LuaSnip").setup()
-			luasnip.jump(direction)
-		end,
+		--NOTE: luasnip needs to be properly setup with blink
+		preset = "luasnip",
+		-- expand = function(snippet)
+		-- 	local luasnip = require("abstract.plugins.LuaSnip").setup()
+		-- 	luasnip.lsp_expand(snippet)
+		-- end,
+		-- active = function(filter)
+		-- 	local luasnip = require("abstract.plugins.LuaSnip").setup()
+		-- 	if filter and filter.direction then
+		-- 		return luasnip.jumpable(filter.direction)
+		-- 	end
+		-- 	return luasnip.in_snippet()
+		-- end,
+		-- jump = function(direction)
+		-- 	local luasnip = require("abstract.plugins.LuaSnip").setup()
+		-- 	luasnip.jump(direction)
+		-- end,
 	},
 
 	signature = {
@@ -110,7 +93,7 @@ spec.opts = {
 		list = {
 			-- Maximum number of items to display
 			max_items = 200,
-			selection = { preselect = true, auto_insert = true },
+			selection = { preselect = false, auto_insert = true },
 		},
 		accept = {
 			-- Create an undo point when accepting a completion item
@@ -211,6 +194,24 @@ spec.opts = {
 			Operator = "",
 			TypeParameter = " ",
 		},
+	},
+
+	-- When specifying 'preset' in the keymap table, the custom key mappings are merged with the preset,
+	-- and any conflicting keys will overwrite the preset mappings.
+	-- The "fallback" command will run the next non blink keymap.
+	keymap = {
+		["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+		["<C-e>"] = { "hide", "fallback" },
+		["<Enter>"] = { "accept", "fallback" },
+
+		["<Up>"] = { "select_prev", "fallback" },
+		["<Down>"] = { "select_next", "fallback" },
+
+		["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+		["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+
+		["<C-u>"] = { "scroll_documentation_up", "fallback" },
+		["<C-d>"] = { "scroll_documentation_down", "fallback" },
 	},
 }
 
