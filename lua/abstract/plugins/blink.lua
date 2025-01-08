@@ -106,15 +106,11 @@ spec.opts = {
 			show_on_insert_on_trigger_character = true, -- Shows after entering insert mode on top of a trigger character.
 		},
 
+		-- https://cmp.saghen.dev/configuration/completion.html#list-go-to-default-configuration
 		list = {
 			-- Maximum number of items to display
 			max_items = 200,
-			-- Controls if completion items will be selected automatically, and whether selection automatically inserts
-			-- 'preselect' will automatically select the first item in the completion list
-			-- 'manual' will not select any item by default
-			-- 'auto_insert' will not select any item by default, and insert the completion items automatically
-			-- when selecting the
-			selection = "auto_insert",
+			selection = { preselect = true, auto_insert = true },
 		},
 		accept = {
 			-- Create an undo point when accepting a completion item
