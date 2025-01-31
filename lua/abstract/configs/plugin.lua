@@ -37,7 +37,6 @@ M.plugins = {
 	"mason-lspconfig",
 	"messenger",
 	"navic",
-	"neo-tree",
 	"noice",
 	"none-ls",
 	"nvim-bqf",

@@ -2,7 +2,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ─────────────────────────────────────────────────
 Plugin: snacks.nvim
-Github: github.com/folke/snacks.nvim
+Source: github.com/folke/snacks.nvim
 
 A collection of small QoL plugins for Neovim.
 ─────────────────────────────────────────────────
@@ -15,6 +15,8 @@ local spec = {
 	lazy = false,
 	keys = require("abstract.configs.mapping").plugin["folke/snacks.nvim"],
 }
+---@param opts? snacks.picker.explorer.Config|{}
+-- Snacks.explorer.open(opts)
 
 ---@type snacks.Config
 local opts = {
@@ -29,23 +31,28 @@ local opts = {
 	input = {
 		enabled = true,
 	},
-
-	-- Deal with big files
-	---@class snacks.bigfile.Config
-	bigfile = {
-		notify = true, -- show notification when big file detected
-		size = 5 * 1024 * 1024, -- 5MB
-		-- Enable or disable features when big file detected
-		---@param ctx {buf: number, ft:string}
-		setup = function(ctx)
-			vim.cmd([[NoMatchParen]])
-			Snacks.util.wo(0, { foldmethod = "manual", statuscolumn = "", conceallevel = 0 })
-			vim.b.minianimate_disable = true
-			vim.schedule(function()
-				vim.bo[ctx.buf].syntax = ctx.ft
-			end)
-		end,
+	---@class snacks.explorer.Config
+	explorer = {
+		enabled = true,
+		replace_netrw = true, -- Replace netrw with the snacks explorer
 	},
+}
+
+-- Deal with big files
+---@class snacks.bigfile.Config
+opts.bigfile = {
+	notify = true, -- show notification when big file detected
+	size = 5 * 1024 * 1024, -- 5MB
+	-- Enable or disable features when big file detected
+	---@param ctx {buf: number, ft:string}
+	setup = function(ctx)
+		vim.cmd([[NoMatchParen]])
+		Snacks.util.wo(0, { foldmethod = "manual", statuscolumn = "", conceallevel = 0 })
+		vim.b.minianimate_disable = true
+		vim.schedule(function()
+			vim.bo[ctx.buf].syntax = ctx.ft
+		end)
+	end,
 }
 
 ---@class snacks.lazygit.Config: snacks.terminal.Opts
