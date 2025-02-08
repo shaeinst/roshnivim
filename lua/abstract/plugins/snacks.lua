@@ -41,6 +41,7 @@ local opts = {
 -- Deal with big files
 ---@class snacks.bigfile.Config
 opts.bigfile = {
+	enabled = true,
 	notify = true, -- show notification when big file detected
 	size = 5 * 1024 * 1024, -- 5MB
 	-- Enable or disable features when big file detected
@@ -144,7 +145,8 @@ opts.indent = {
 	},
 }
 
--- Pretty vim.notify
+-- === Pretty vim.notify ===
+-- https://github.com/folke/snacks.nvim/blob/main/docs/notifier.md
 ---@class snacks.notifier.Config
 ---@field keep? fun(notif: snacks.notifier.Notif): boolean # global keep function
 opts.notifier = {
@@ -169,7 +171,11 @@ opts.notifier = {
 	keep = function(notif)
 		return vim.fn.getcmdpos() > 0
 	end,
+
 	---@type snacks.notifier.style
+	-- compact: use border for icon and title
+	-- minimal: no border, only icon and message
+	-- fancy: similar to the default nvim-notify style
 	style = "compact",
 	top_down = true, -- place notifications from top to bottom
 	date_format = "%R", -- time format for notifications
