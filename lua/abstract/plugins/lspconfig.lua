@@ -1,8 +1,8 @@
 --[[
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ────────────────────────────────────────────────
-Plugin:    nvim-lspconfig
-Github:    https://github.com/neovim/nvim-lspconfig
+Plugin: nvim-lspconfig
+Source: https://github.com/neovim/nvim-lspconfig
 
 Quickstart configs for Nvim LSP
 ────────────────────────────────────────────────
@@ -43,11 +43,12 @@ local lsp_config = function()
 	-- show diagnostic on float window(like auto complete)
 	-- vim.api.nvim_command [[ autocmd CursorHold  *.lua,*.sh,*.bash,*.dart,*.py,*.cpp,*.c,js lua vim.lsp.diagnostic.show_line_diagnostics() ]]
 
-	-- set LSP diagnostic symbols/signs ●
-	vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
-	vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
-	vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
-	vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+	-- set LSP diagnostic symbols/signs ●       
+	local sign_define = vim.fn.sign_define
+	sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
+	sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" })
+	sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
+	sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
 
 	-- Auto-format files prior to saving them
 	-- vim.api.nvim_command[[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]]
@@ -56,14 +57,15 @@ end
 local hook = {
 	flags = { debounce_text_changes = 150 },
 	on_attach = function(client, bufnr)
-		---------------------
-		-- NOTE: integrate with none-ls | null -ls
-		-- Avoiding LSP formatting conflicts
-		-- ref: https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
-		-- 2nd red: https://github.com/neovim/nvim-lspconfig/issues/1891#issuecomment-1157964108
-		-- client.server_capabilities.documentFormattingProvider = false
-		-- client.server_capabilities.documentRangeFormattingProvider = false
-		--------------------------
+		--[[
+		NOTE: integrate with none-ls | null -ls
+		Avoiding LSP formatting conflicts
+		ref: https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
+		     https://github.com/neovim/nvim-lspconfig/issues/1891#issuecomment-1157964108
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
+		--]]
+
 		-- lsp support on winbar with nvim-navic
 		if ABSTRACT.PLUGINS["SmiteshP/nvim-navic"].enabled then
 			local _navic, navic = pcall(require, "nvim-navic")
