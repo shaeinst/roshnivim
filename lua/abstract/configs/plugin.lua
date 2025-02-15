@@ -44,7 +44,6 @@ M.plugins = {
 	"oil",
 	"penvim",
 	"renamer",
-	"rustaceanvim",
 	"SchemaStore",
 	"session-manager",
 	"snacks",
